@@ -1,0 +1,230 @@
+[
+    {
+        "id": "rf_cardiac_arrest",
+        "condition": "cardiac_arrest",
+        "severity": "emergency",
+        "action": "Call Emergency Services immediately. Start CPR if trained.",
+        "reason": "Signs of cardiac arrest."
+    },
+    {
+        "id": "rf_chest_pain_dyspnea",
+        "condition": "chest_pain",
+        "required_co_condition": "dyspnea",
+        "severity": "emergency",
+        "action": "Call Emergency Services. Potential Heart Attack.",
+        "reason": "Chest pain with shortness of breath."
+    },
+    {
+        "id": "rf_chest_pain_sweating",
+        "condition": "chest_pain",
+        "required_co_condition": "sweating",
+        "severity": "emergency",
+        "action": "Call Emergency Services.",
+        "reason": "Chest pain with sweating (diaphoresis)."
+    },
+    {
+        "id": "rf_chest_pain_radiation",
+        "condition": "chest_pain",
+        "required_co_condition": "arm_pain",
+        "severity": "emergency",
+        "action": "Call Emergency Services.",
+        "reason": "Radiating chest pain."
+    },
+    {
+        "id": "rf_chest_pain_severe",
+        "condition": "chest_pain",
+        "severity": "emergency",
+        "action": "Call Emergency Services.",
+        "reason": "Severe chest pain report."
+    },
+    {
+        "id": "rf_stroke_face",
+        "condition": "facial_asymmetry",
+        "severity": "emergency",
+        "action": "Call Emergency Services. Stroke Protocol (FAST).",
+        "reason": "Facial drooping indicating potential stroke."
+    },
+    {
+        "id": "rf_stroke_speech",
+        "condition": "dysarthria",
+        "severity": "emergency",
+        "action": "Call Emergency Services. Stroke Protocol.",
+        "reason": "Slurred speech indicating potential stroke."
+    },
+    {
+        "id": "rf_stroke_weakness",
+        "condition": "hemiparesis",
+        "severity": "emergency",
+        "action": "Call Emergency Services. Stroke Protocol.",
+        "reason": "Sudden weakness on one side."
+    },
+    {
+        "id": "rf_severe_bleeding",
+        "condition": "hemorrhage",
+        "severity": "emergency",
+        "action": "Apply pressure. Call Emergency Services.",
+        "reason": "Uncontrolled bleeding."
+    },
+    {
+        "id": "rf_breathing_blue",
+        "condition": "cyanosis",
+        "severity": "emergency",
+        "action": "Call Emergency Services immediately.",
+        "reason": "Cyanosis (lack of oxygen)."
+    },
+    {
+        "id": "rf_breathing_severe",
+        "condition": "dyspnea",
+        "severity": "emergency",
+        "action": "Call Emergency Services if struggling to breathe.",
+        "reason": "Severe respiratory distress."
+    },
+    {
+        "id": "rf_unconscious",
+        "condition": "syncope",
+        "severity": "emergency",
+        "action": "Call Emergency Services.",
+        "reason": "Loss of consciousness."
+    },
+    {
+        "id": "rf_seizure",
+        "condition": "convulsion",
+        "severity": "emergency",
+        "action": "Call Emergency Services.",
+        "reason": "Seizure activity."
+    },
+    {
+        "id": "rf_anaphylaxis",
+        "condition": "anaphylaxis",
+        "severity": "emergency",
+        "action": "Administer Epipen if available. Call Emergency Services.",
+        "reason": "Anaphylactic shock."
+    },
+    {
+        "id": "rf_poison",
+        "condition": "ingestion_toxicity",
+        "severity": "emergency",
+        "action": "Call Poison Control or Emergency Services.",
+        "reason": "Poison ingestion."
+    },
+    {
+        "id": "rf_meningitis",
+        "condition": "nuchal_rigidity",
+        "required_co_condition": "fever",
+        "severity": "emergency",
+        "action": "Go to ER immediately.",
+        "reason": "Possible Meningitis (Stiff neck + Fever)."
+    },
+    {
+        "id": "rf_thunderclap_headache",
+        "condition": "thunderclap_headache",
+        "severity": "emergency",
+        "action": "Go to ER immediately.",
+        "reason": "Sudden severe headache (potential hemorrhage)."
+    },
+    {
+        "id": "rf_sepsis",
+        "condition": "systemic_infection",
+        "severity": "emergency",
+        "action": "Go to ER immediately.",
+        "reason": "Signs of Sepsis."
+    },
+    {
+        "id": "rf_suicide",
+        "condition": "suicide",
+        "severity": "emergency",
+        "action": "Call Suicide Prevention Hotline or Emergency Services.",
+        "reason": "Mental health emergency."
+    },
+    {
+        "id": "rf_head_injury_vomit",
+        "condition": "traumatic_brain_injury",
+        "required_co_condition": "vomiting",
+        "severity": "emergency",
+        "action": "Go to ER immediately.",
+        "reason": "Head injury with vomiting."
+    },
+    {
+        "id": "rf_baby_fever",
+        "condition": "pediatric_pyrexia",
+        "severity": "emergency",
+        "action": "Go to ER or Pediatric Urgent Care immediately.",
+        "reason": "High fever in infant."
+    },
+    {
+        "id": "rf_vision_loss",
+        "condition": "visual_disturbance",
+        "severity": "emergency",
+        "action": "Go to ER.",
+        "reason": "Sudden vision loss or disturbance."
+    },
+    {
+        "id": "rf_diabetic_emergency",
+        "condition": "diabetic_ketoacidosis",
+        "severity": "emergency",
+        "action": "Call Emergency Services.",
+        "reason": "Diabetic emergency."
+    },
+    {
+        "id": "rf_abdominal_severe",
+        "condition": "abdominal_pain",
+        "keywords": [
+            "severe",
+            "unbearable",
+            "tearing"
+        ],
+        "min_matches": 1,
+        "severity": "emergency",
+        "action": "Go to ER.",
+        "reason": "Severe abdominal pain."
+    },
+    {
+        "id": "rf_vomiting_blood",
+        "condition": "hemoptysis",
+        "severity": "emergency",
+        "action": "Go to ER.",
+        "reason": "Vomiting or coughing blood."
+    },
+    {
+        "id": "rf_baby_fever_kw",
+        "condition": "fever",
+        "keywords": [
+            "baby",
+            "infant",
+            "child",
+            "newborn",
+            "toddler"
+        ],
+        "min_matches": 1,
+        "severity": "emergency",
+        "action": "Go to ER or Pediatric Urgent Care immediately.",
+        "reason": "High fever in infant or child."
+    },
+    {
+        "id": "rf_abdominal_severe_kw",
+        "condition": "abdominal_pain",
+        "severity": "emergency",
+        "action": "Go to ER.",
+        "reason": "Severe abdominal pain.",
+        "keywords": [
+            "severe",
+            "unbearable",
+            "tearing",
+            "excruciating"
+        ],
+        "min_matches": 1
+    },
+    {
+        "id": "rf_severe_pain_direct",
+        "condition": "pain",
+        "keywords": [
+            "severe",
+            "unbearable",
+            "excruciating"
+        ],
+        "min_matches": 1,
+        "severity": "emergency",
+        "action": "Go to ER if pain is severe and persistent.",
+        "reason": "Severe pain reported."
+    }
+]

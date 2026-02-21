@@ -1,0 +1,260 @@
+.container {
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #1e293b;
+    padding-bottom: 40px;
+}
+
+.header {
+    background: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.backBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.content {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Form Styles */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #334155;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #64748b;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chip.active {
+    background: #0d9488;
+    color: white;
+    border-color: #0d9488;
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+}
+
+.slider {
+    width: 100%;
+    accent-color: #0d9488;
+}
+
+.generateBtn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #0d9488, #0f766e);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+    transition: transform 0.2s;
+}
+
+.generateBtn:active {
+    transform: scale(0.98);
+}
+
+/* Plan View */
+.planView h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.weekGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dayCard {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.dayHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.dayHeader h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.focusTag {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.exList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.exList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f8fafc;
+}
+
+.exName {
+    font-weight: 500;
+    color: #334155;
+}
+
+.exMeta {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.startBtn {
+    width: 100%;
+    padding: 12px;
+    background: #f1f5f9;
+    color: #0d9488;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.startBtn:hover {
+    background: #e2e8f0;
+}
+
+/* Player Overlay */
+.playerOverlay {
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+}
+
+.playerHeader {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeBtn {
+    font-size: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.playerContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.mainDisplay h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #1e293b;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.value {
+    font-size: 48px;
+    font-weight: 800;
+    color: #0d9488;
+}
+
+.completeSetBtn {
+    width: 100%;
+    padding: 20px;
+    background: #0d9488;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+}

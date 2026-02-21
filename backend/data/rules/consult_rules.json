@@ -1,0 +1,113 @@
+[
+    {
+        "id": "c_persistent_fever",
+        "condition": "fever",
+        "criterias": [
+            {
+                "field": "duration_days",
+                "operator": "gt",
+                "value": 3
+            }
+        ],
+        "severity": "consult",
+        "action": "Consult a doctor if fever persists > 3 days.",
+        "reason": "Persistent fever."
+    },
+    {
+        "id": "c_chronic_cough",
+        "condition": "cough",
+        "criterias": [
+            {
+                "field": "duration_days",
+                "operator": "gt",
+                "value": 14
+            }
+        ],
+        "severity": "consult",
+        "action": "See a doctor for persistent cough.",
+        "reason": "Chronic cough > 2 weeks."
+    },
+    {
+        "id": "c_migraine_pattern",
+        "keywords": [
+            "migraine",
+            "light sensitivity",
+            "aura"
+        ],
+        "min_matches": 1,
+        "severity": "consult",
+        "action": "Consult a neurologist or GP.",
+        "reason": "Migraine symptoms."
+    },
+    {
+        "id": "c_dehydration_moderate",
+        "keywords": [
+            "thirsty",
+            "dark urine",
+            "dry mouth"
+        ],
+        "min_matches": 2,
+        "severity": "self_care",
+        "action": "Drink fluids and use electrolytes.",
+        "reason": "Signs of dehydration."
+    },
+    {
+        "id": "c_uti",
+        "keywords": [
+            "painful urination",
+            "burning pee",
+            "frequent pee"
+        ],
+        "min_matches": 1,
+        "severity": "consult",
+        "action": "Consult a doctor for possible UTI.",
+        "reason": "Urinary tract symptoms."
+    },
+    {
+        "id": "c_rash_unknown",
+        "condition": "rash",
+        "severity": "consult",
+        "action": "Monitor. If it spreads or hurts, see a doctor.",
+        "reason": "Unidentifed rash."
+    },
+    {
+        "id": "c_abdominal_mild",
+        "condition": "abdominal_pain",
+        "severity": "consult",
+        "action": "If pain persists > 24h, see a doctor. Avoid eating solid foods for now.",
+        "reason": "Persistent mild abdominal pain."
+    },
+    {
+        "id": "c_back_pain",
+        "keywords": [
+            "back pain",
+            "lower back"
+        ],
+        "severity": "self_care",
+        "action": "Rest, apply heat/ice, and use OTC pain relief.",
+        "reason": "Back pain."
+    },
+    {
+        "id": "c_insomnia",
+        "keywords": [
+            "cant sleep",
+            "insomnia",
+            "awake all night"
+        ],
+        "severity": "self_care",
+        "action": "Try sleep hygiene: dark room, no screens. If chronic, consult GP.",
+        "reason": "Sleep disturbance."
+    },
+    {
+        "id": "c_anxiety",
+        "keywords": [
+            "anxious",
+            "worried",
+            "panic",
+            "stress"
+        ],
+        "severity": "self_care",
+        "action": "Try breathing exercises. Consider speaking to a therapist.",
+        "reason": "Anxiety symptoms."
+    }
+]

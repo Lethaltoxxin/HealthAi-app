@@ -1,0 +1,283 @@
+.container {
+    min-height: 100vh;
+    background: #F8FAFC;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    background: white;
+    gap: 16px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.backBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #475569;
+    padding: 0;
+    display: flex;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: #0F172A;
+}
+
+.emptyState {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.cameraCircle {
+    width: 80px;
+    height: 80px;
+    background: #00A8A8;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: white;
+    margin-bottom: 24px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 168, 168, 0.3);
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.cameraCircle:hover {
+    transform: scale(1.05);
+}
+
+.scanner {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    animation: scan 1.5s linear infinite;
+    box-shadow: 0 0 10px white;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.emptyState h2 {
+    font-size: 24px;
+    color: #0F172A;
+    margin: 0 0 12px;
+}
+
+.emptyState p {
+    color: #64748B;
+    margin: 0 0 32px;
+    line-height: 1.5;
+}
+
+.scanBtn {
+    background: #0F172A;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.scanBtn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.listSection {
+    padding: 24px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.listHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.listHeader h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #0F172A;
+}
+
+.addManualBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border: 1px solid #E2E8F0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+}
+
+.medGrid {
+    display: grid;
+    gap: 16px;
+}
+
+.medCard {
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid #E2E8F0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.medCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.medIcon {
+    width: 48px;
+    height: 48px;
+    background: #F0FDFA;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+}
+
+.pillIcon {
+    width: 20px;
+    height: 10px;
+    background: #00A8A8;
+    border-radius: 10px;
+    position: relative;
+}
+
+.pillIcon::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #0D9488;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.medInfo {
+    flex: 1;
+}
+
+.medInfo h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    color: #0F172A;
+}
+
+.medDose {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.medMeta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #94A3B8;
+}
+
+.medMeta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.medNote {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #D97706;
+    background: #FFFBEB;
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.addBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #F1F5F9;
+    color: #0F172A;
+    border: none;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.addBtn:hover {
+    background: #0F172A;
+    color: white;
+}
+
+.disclaimer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #94A3B8;
+}

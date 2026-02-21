@@ -1,0 +1,309 @@
+.container {
+    min-height: 100vh;
+    background: #F8FAFC;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 90px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: white;
+}
+
+.header h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #0F172A;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: #475569;
+}
+
+.dateStrip {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: white;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 24px;
+}
+
+.dateCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50px;
+    padding: 12px 8px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #F1F5F9;
+}
+
+.activeDate {
+    background: #0F172A;
+    color: white;
+    transform: scale(1.05);
+}
+
+.dayLabel {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    opacity: 0.7;
+}
+
+.dateLabel {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.caloriesCard {
+    margin: 0 20px 20px;
+    background: #0F172A;
+    color: white;
+    padding: 24px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caloriesValue {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.caloriesLabel {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.caloriesRing {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.ringOuter {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    place-items: center;
+}
+
+.ringInner {
+    display: grid;
+    place-items: center;
+}
+
+.macrosGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.macroCard {
+    background: white;
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.macroHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.macroValue {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.macroLabel {
+    font-size: 11px;
+    color: #64748B;
+}
+
+.miniRing {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+}
+
+.mealsContainer {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mealSection {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.mealHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.mealHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #0F172A;
+}
+
+.mealRight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mealRight span {
+    font-size: 13px;
+    color: #64748B;
+}
+
+.addBtn {
+    width: 28px;
+    height: 28px;
+    background: #00A8A8;
+    border: none;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.mealPlaceholder {
+    font-size: 14px;
+    color: #94A3B8;
+    font-style: italic;
+    padding: 8px 0;
+}
+
+/* Plan Generator */
+.planGenerator {
+    margin: 24px 20px 0;
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid #E2E8F0;
+}
+
+.generatorHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.generatorHeader h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #0F172A;
+}
+
+.badge {
+    background: #E0F2FE;
+    color: #0284C7;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.generatorCta p {
+    color: #64748B;
+    font-size: 14px;
+    margin: 0 0 16px;
+}
+
+.generateBtn {
+    width: 100%;
+    background: #0F172A;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.generateBtn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.planPreview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.planDay {
+    padding: 12px;
+    background: #F8FAFC;
+    border-radius: 12px;
+}
+
+.planDay span {
+    display: block;
+    font-size: 12px;
+    color: #64748B;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.planDay p {
+    margin: 0;
+    font-size: 14px;
+    color: #0F172A;
+    font-weight: 500;
+}
+
+.viewFullBtn {
+    width: 100%;
+    background: white;
+    border: 1px solid #E2E8F0;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #0F172A;
+    cursor: pointer;
+    margin-top: 8px;
+}

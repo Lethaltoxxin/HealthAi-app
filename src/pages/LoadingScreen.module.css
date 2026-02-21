@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: var(--soft-green);
+    gap: 48px;
+}
+
+.ringContainer {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.spinner {
+    width: 100%;
+    height: 100%;
+    border: 4px solid rgba(15, 90, 73, 0.1);
+    border-top-color: var(--primary-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 240px;
+}
+
+.taskItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #CCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.checkbox.active {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 10px rgba(15, 90, 73, 0.2);
+}
+
+.checkbox.done {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.taskLabel {
+    font-size: 16px;
+    color: var(--text-dark);
+    font-weight: 500;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.taskLabel.visible {
+    opacity: 1;
+}

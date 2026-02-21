@@ -1,0 +1,83 @@
+:root {
+  /* Core Colors */
+  --primary-green: #0F5A49;
+  /* Deep Green CTA */
+  --soft-green: #E6F3F0;
+  /* Background tint */
+  --accent-blue: #D0E6F5;
+  /* Soft Blue accent */
+  --text-dark: #1A1A1A;
+  /* Primary Text */
+  --text-medium: #555555;
+  /* Secondary Text */
+  --text-light: #888888;
+  /* Muted Text */
+  --white: #FFFFFF;
+  --error: #D32F2F;
+  --warning: #FFA000;
+  --success: #388E3C;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Explore Page Redesign Tokens */
+  --color-primary: #00a8a8;
+  /* New Teal Primary */
+  --color-primary-600: #008a8a;
+  /* Darker shade of primary */
+  --color-accent: #00d6d6;
+  /* New Cyan Accent */
+  --color-brand-deep: #0B1F3B;
+  /* deep navy - headers / nav */
+  --color-surface: #F8FAFC;
+  /* page background */
+  --color-card: #ffffff;
+  /* card background */
+  --color-muted: #64748B;
+  /* secondary text */
+  --color-success: #059669;
+  --color-warning: #F59E0B;
+  --color-danger: #F87171;
+  --color-glass: rgba(255, 255, 255, 0.72);
+  --radius: 14px;
+  --shadow-soft: 0 6px 20px rgba(12, 18, 30, 0.06);
+  --ease-smooth: cubic-bezier(.22, .9, .32, 1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--soft-green);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-light);
+  border-radius: var(--radius-full);
+}

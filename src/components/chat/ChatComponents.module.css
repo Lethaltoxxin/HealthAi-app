@@ -1,0 +1,196 @@
+.row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.botRow {
+    justify-content: flex-start;
+}
+
+.userRow {
+    justify-content: flex-end;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0d9488, #0f766e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(13, 148, 136, 0.2);
+}
+
+.bubbleWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 80%;
+}
+
+.bubble {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.botBubble {
+    background: white;
+    color: #1e293b;
+    border-top-left-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.userBubble {
+    background: #0d9488;
+    color: white;
+    border-top-right-radius: 4px;
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+}
+
+.actionsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.actionBtn {
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f766e;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover {
+    background: #f0fdfa;
+    border-color: #0d9488;
+}
+
+/* Triage Card in Chat */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.reason {
+    margin: 0;
+    color: #64748b;
+}
+
+.emergency {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+.consult {
+    background: #fff7ed;
+    border-color: #fed7aa;
+    color: #9a3412;
+}
+
+.safe {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #166534;
+}
+
+/* Typing Indicator */
+.typingContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.typingBubble {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 18px;
+    border-top-left-radius: 4px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #94a3b8;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Quick Replies */
+.quickContainer {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 4px;
+    scrollbar-width: none;
+}
+
+.quickChip {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(13, 148, 136, 0.1);
+    color: #0d9488;
+    border: 1px solid transparent;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quickChip:hover {
+    background: rgba(13, 148, 136, 0.2);
+    transform: translateY(-1px);
+}

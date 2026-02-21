@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: var(--white);
+    width: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-md);
+    background: var(--white);
+    z-index: 100;
+}
+
+.menuBtn {
+    background: none;
+    color: var(--text-dark);
+    padding: 4px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-green);
+}
+
+.main {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 80px;
+    /* Space for Bottom Nav */
+    background: #FAFAFA;
+}

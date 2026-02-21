@@ -1,0 +1,301 @@
+/* ──── Full Screen Player Overlay ──── */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    background: #0a0a1a;
+}
+
+.bgGradient {
+    position: absolute;
+    inset: 0;
+    transition: background 1s ease;
+    z-index: 0;
+}
+
+/* ──── Floating Particles ──── */
+.particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    bottom: -10px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(30px);
+        opacity: 0;
+    }
+}
+
+/* ──── Header ──── */
+.playerHeader {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    flex-shrink: 0;
+}
+
+.closeBtn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background 0.2s;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.headerTitle {
+    text-align: center;
+}
+
+.nowPlaying {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.6;
+}
+
+/* ──── Center Visualizer ──── */
+.center {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+}
+
+.visualizerWrap {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visualizer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.progressRing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    height: 260px;
+    transform: translate(-50%, -50%);
+}
+
+/* ──── Track Info ──── */
+.trackInfo {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.trackTitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: -0.3px;
+}
+
+.trackCategory {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.5;
+    text-transform: capitalize;
+}
+
+/* ──── Timer / Progress ──── */
+.timer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.6;
+}
+
+.progressBar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    overflow: visible;
+    position: relative;
+    padding: 8px 0;
+    margin: -8px 0;
+    background-clip: content-box;
+}
+
+.progressFill {
+    height: 6px;
+    border-radius: 3px;
+    transition: width 1s linear;
+    position: relative;
+    z-index: 1;
+    margin-top: 8px;
+}
+
+.seekThumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    transition: left 1s linear, transform 0.15s;
+    pointer-events: none;
+}
+
+.progressBar:hover .seekThumb {
+    transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* ──── Controls ──── */
+.controls {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px 24px 40px;
+    flex-shrink: 0;
+}
+
+.controlBtn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controlBtn:hover {
+    color: white;
+}
+
+.controlBtn:active {
+    transform: scale(0.9);
+}
+
+.playPauseBtn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s;
+}
+
+.playPauseBtn:hover {
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ──── Volume ──── */
+.volumeWrap {
+    display: flex;
+    align-items: center;
+}
+
+.volumeSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 70px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    cursor: pointer;
+}

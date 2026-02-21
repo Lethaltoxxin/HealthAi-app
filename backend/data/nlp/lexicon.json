@@ -1,0 +1,302 @@
+{
+    "synonyms": {
+        "dyspnea": [
+            "short of breath",
+            "cant breathe",
+            "trouble breathing",
+            "difficulty breathing",
+            "breathless",
+            "gasping",
+            "air hunger",
+            "hard to breathe"
+        ],
+        "chest_pain": [
+            "chest pain",
+            "tight chest",
+            "chest pressure",
+            "crushing chest",
+            "heart hurts",
+            "angina",
+            "pectoral pain"
+        ],
+        "dizziness": [
+            "dizzy",
+            "woozy",
+            "lightheaded",
+            "spinning",
+            "vertigo",
+            "feeling faint"
+        ],
+        "vomiting": [
+            "throwing up",
+            "puking",
+            "emesis",
+            "heaving",
+            "sick to stomach"
+        ],
+        "fever": [
+            "high temp",
+            "temperature",
+            "pyrexia",
+            "hot",
+            "burning up",
+            "chills"
+        ],
+        "rhinorrhea": [
+            "runny nose",
+            "snotty",
+            "nasal drip"
+        ],
+        "tachycardia": [
+            "heart racing",
+            "fast heart",
+            "palpitations",
+            "pounding heart",
+            "fluttering"
+        ],
+        "abdominal_pain": [
+            "stomach ache",
+            "belly pain",
+            "abdominal cramps",
+            "tummy hurts",
+            "gut pain"
+        ],
+        "syncope": [
+            "fainted",
+            "passed out",
+            "blacked out",
+            "loss of consciousness",
+            "unconscious",
+            "unresponsive"
+        ],
+        "visual_disturbance": [
+            "blurry vision",
+            "seeing double",
+            "vision loss",
+            "cant see",
+            "flashing lights"
+        ],
+        "dysarthria": [
+            "slurred speech",
+            "cant speak",
+            "trouble talking",
+            "garbled speech"
+        ],
+        "facial_asymmetry": [
+            "face drooping",
+            "face sag",
+            "droopy face",
+            "numb face"
+        ],
+        "thunderclap_headache": [
+            "worst headache",
+            "severe headache",
+            "head exploding",
+            "sudden headache"
+        ],
+        "hemoptysis": [
+            "coughing blood",
+            "blood in cough",
+            "spitting blood",
+            "vomiting blood",
+            "blood in vomit"
+        ],
+        "cyanosis": [
+            "blue lips",
+            "blue fingers",
+            "pale lips",
+            "turning blue"
+        ],
+        "nuchal_rigidity": [
+            "stiff neck",
+            "neck pain",
+            "cant move neck"
+        ],
+        "hemorrhage": [
+            "uncontrolled bleeding",
+            "heavy bleeding",
+            "gushing blood",
+            "bleeding wont stop"
+        ],
+        "convulsion": [
+            "seizure",
+            "fit",
+            "shaking",
+            "jerking"
+        ],
+        "altered_mental_status": [
+            "confused",
+            "disoriented",
+            "dont know where i am",
+            "acting strange",
+            "delirium"
+        ],
+        "anaphylaxis": [
+            "swelling throat",
+            "throat closing",
+            "tongue swelling",
+            "cant swallow",
+            "allergic reaction"
+        ],
+        "ingestion_toxicity": [
+            "poison swallowed",
+            "drank bleach",
+            "ate pills",
+            "overdose"
+        ],
+        "electrocution": [
+            "electric shock",
+            "zapped"
+        ],
+        "traumatic_brain_injury": [
+            "head injury",
+            "hit head",
+            "concussion"
+        ],
+        "pediatric_pyrexia": [
+            "baby fever",
+            "infant fever",
+            "hot baby",
+            "baby has high fever",
+            "child fever",
+            "toddler fever"
+        ],
+        "urticaria_with_dyspnea": [
+            "rapid rash",
+            "hives breathing"
+        ],
+        "systemic_infection": [
+            "sepsis",
+            "blood poisoning"
+        ],
+        "hypoglycemic_shock": [
+            "diabetic coma",
+            "low blood sugar pass out"
+        ],
+        "myocardial_infarction": [
+            "heart attack",
+            "coronary"
+        ],
+        "diaphoresis_with_emesis": [
+            "sweating nausea",
+            "cold sweat vomit"
+        ],
+        "referred_pain": [
+            "radiating pain",
+            "arm pain",
+            "jaw pain"
+        ],
+        "resting_dyspnea": [
+            "breathless at rest",
+            "panting"
+        ],
+        "hemiparesis": [
+            "sudden weakness",
+            "cant move arm",
+            "cant walk"
+        ],
+        "delirium": [
+            "elderly confusion",
+            "senior confused"
+        ],
+        "status_epilepticus": [
+            "seizure long",
+            "seizure wont stop"
+        ],
+        "exsanguination": [
+            "bleeding out"
+        ],
+        "open_fracture": [
+            "bone visible",
+            "bone sticking out"
+        ],
+        "meningitis": [
+            "fever stiff neck"
+        ],
+        "neonatal_sepsis": [
+            "infant fever",
+            "newborn fever"
+        ],
+        "tachycardia_pyrexia": [
+            "high hr fever",
+            "fast heart fever"
+        ],
+        "diabetic_ketoacidosis": [
+            "unconscious diabetic",
+            "fruity breath"
+        ],
+        "angioedema": [
+            "lip swelling",
+            "eye swelling"
+        ],
+        "ocular_burn": [
+            "chemical eye",
+            "bleach in eye"
+        ],
+        "polytrauma": [
+            "major accident",
+            "car crash"
+        ],
+        "thermal_injury": [
+            "burns",
+            "fire"
+        ],
+        "aspiration": [
+            "near drowning",
+            "water in lungs"
+        ],
+        "laceration": [
+            "deep cut",
+            "gash",
+            "wound"
+        ],
+        "malaise": [
+            "vague discomfort",
+            "feeling off",
+            "unwell"
+        ],
+        "myalgia": [
+            "muscle aches",
+            "body aches"
+        ],
+        "symptomatic": [
+            "having symptoms",
+            "feeling sick"
+        ],
+        "systolic": [
+            "top number",
+            "upper pressure"
+        ],
+        "alcoholism": [
+            "alcohol dependence",
+            "drinking problem"
+        ],
+        "asthma": [
+            "tight air",
+            "wheezing"
+        ],
+        "asymptomatic": [
+            "no symptoms",
+            "feel fine"
+        ],
+        "malfunction": [
+            "not working",
+            "broken"
+        ],
+        "mucosa": [
+            "moist lining",
+            "inside mouth"
+        ],
+        "syndrome": [
+            "set of symptoms",
+            "condition"
+        ],
+        "suicide": [
+            "suicidal",
+            "suicidal thoughts",
+            "kill myself",
+            "want to die",
+            "end my life"
+        ]
+    }
+}

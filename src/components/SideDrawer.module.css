@@ -1,0 +1,130 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background: var(--white);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    padding: 24px;
+    border-bottom: 1px solid #EEE;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--soft-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+}
+
+.name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.email {
+    margin: 0;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.closeBtn {
+    background: none;
+    color: var(--text-light);
+    padding: 4px;
+}
+
+.nav {
+    flex: 1;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: transparent;
+    border-radius: 12px;
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    transition: background 0.1s;
+}
+
+.navItem:active {
+    background: #F5F5F5;
+}
+
+.footer {
+    padding: 24px;
+    border-top: 1px solid #EEE;
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--error);
+    font-weight: 500;
+    background: none;
+    width: 100%;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

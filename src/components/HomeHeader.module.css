@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--white);
+    padding-top: 24px;
+}
+
+.greeting h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.greeting p {
+    font-size: 24px;
+    color: var(--text-medium);
+    margin: 4px 0 0 0;
+}
+
+.bellBtn {
+    background: var(--soft-green);
+    color: var(--primary-green);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+}
+
+.bellBtn:active {
+    transform: scale(0.95);
+}

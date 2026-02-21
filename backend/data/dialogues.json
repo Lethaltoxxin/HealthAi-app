@@ -1,0 +1,22 @@
+[
+    {
+        "id": "d_001",
+        "user": "I have a headache and my mind feels foggy.",
+        "bot": "Sorry to hear that. On a scale of 1–10, how severe is the headache right now? Any fever, nausea, or neck stiffness?"
+    },
+    {
+        "id": "d_002",
+        "user": "My chest is tight and I'm short of breath.",
+        "bot": "This may be urgent. Please call emergency services or go to the nearest ER now."
+    },
+    {
+        "id": "d_003",
+        "user": "I want to start exercising.",
+        "bot": "That’s a great step. How many days per week can you train? And do you have any equipment at home?"
+    },
+    {
+        "id": "d_004",
+        "user": "Give me a 7-day vegetarian plan.",
+        "bot": "Sure. Before I build that, what’s your goal — weight loss, maintenance, or muscle gain?"
+    }
+]

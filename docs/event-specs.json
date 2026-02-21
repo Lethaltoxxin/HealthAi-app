@@ -1,0 +1,39 @@
+{
+    "events": [
+        {
+            "type": "chat_message",
+            "payload": {
+                "text": "User input",
+                "intent": "Detected intent"
+            }
+        },
+        {
+            "type": "chat_bot_response",
+            "payload": {
+                "intent": "Response intent",
+                "triage": "Emergency/Consult/Self-Care (optional)"
+            }
+        },
+        {
+            "type": "symptom_check",
+            "description": "Logged when a user submits symptoms for checking.",
+            "payload": {
+                "input": "User's raw text input",
+                "triage": "Resulting triage level (emergency, consult, self_care)",
+                "confidence": "Confidence score (0.0 - 1.0)"
+            }
+        },
+        {
+            "type": "workout_generated",
+            "description": "Logged when a user generates a new workout plan.",
+            "payload": {
+                "profile": {
+                    "goal": "User fitness goal",
+                    "level": "Experience level",
+                    "days_per_week": "Number of workout days",
+                    "equipment": "List of available equipment"
+                }
+            }
+        }
+    ]
+}

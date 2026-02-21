@@ -1,0 +1,452 @@
+[
+    {
+        "id": "ex_pushup",
+        "title": "Push-ups",
+        "primary_muscle": "Chest",
+        "type": "Push",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_squat",
+        "title": "Bodyweight Squats",
+        "primary_muscle": "Legs",
+        "type": "Squat",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_lunge",
+        "title": "Walking Lunges",
+        "primary_muscle": "Legs",
+        "type": "Lunge",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_plank",
+        "title": "Plank",
+        "primary_muscle": "Core",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_burpee",
+        "title": "Burpees",
+        "primary_muscle": "Full Body",
+        "type": "Cardio",
+        "equipment": "Bodyweight",
+        "difficulty": "Advanced",
+        "video": "url"
+    },
+    {
+        "id": "ex_pullup",
+        "title": "Pull-ups",
+        "primary_muscle": "Back",
+        "type": "Pull",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Advanced",
+        "video": "url"
+    },
+    {
+        "id": "ex_db_press",
+        "title": "Dumbbell Bench Press",
+        "primary_muscle": "Chest",
+        "type": "Push",
+        "equipment": "Dumbbells",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_db_row",
+        "title": "Dumbbell Row",
+        "primary_muscle": "Back",
+        "type": "Pull",
+        "equipment": "Dumbbells",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_db_squat",
+        "title": "Goblet Squats",
+        "primary_muscle": "Legs",
+        "type": "Squat",
+        "equipment": "Dumbbells",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_db_lunge",
+        "title": "Dumbbell Lunges",
+        "primary_muscle": "Legs",
+        "type": "Lunge",
+        "equipment": "Dumbbells",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_db_shoulder_press",
+        "title": "Dumbbell Shoulder Press",
+        "primary_muscle": "Shoulders",
+        "type": "Push",
+        "equipment": "Dumbbells",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_lat_pulldown",
+        "title": "Lat Pulldown",
+        "primary_muscle": "Back",
+        "type": "Pull",
+        "equipment": "Cable",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_bench_press",
+        "title": "Barbell Bench Press",
+        "primary_muscle": "Chest",
+        "type": "Push",
+        "equipment": "Barbell",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_deadlift",
+        "title": "Deadlift",
+        "primary_muscle": "Back",
+        "type": "Hinge",
+        "equipment": "Barbell",
+        "difficulty": "Advanced",
+        "video": "url"
+    },
+    {
+        "id": "ex_squat_bb",
+        "title": "Barbell Squat",
+        "primary_muscle": "Legs",
+        "type": "Squat",
+        "equipment": "Barbell",
+        "difficulty": "Advanced",
+        "video": "url"
+    },
+    {
+        "id": "ex_overhead_press",
+        "title": "Overhead Press",
+        "primary_muscle": "Shoulders",
+        "type": "Push",
+        "equipment": "Barbell",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_bicep_curl",
+        "title": "Dumbbell Bicep Curl",
+        "primary_muscle": "Biceps",
+        "type": "Pull",
+        "equipment": "Dumbbells",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_tricep_ext",
+        "title": "Tricep Extension",
+        "primary_muscle": "Triceps",
+        "type": "Push",
+        "equipment": "Dumbbells",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_leg_press",
+        "title": "Leg Press",
+        "primary_muscle": "Legs",
+        "type": "Squat",
+        "equipment": "Machine",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_leg_curl",
+        "title": "Leg Curl",
+        "primary_muscle": "Hamstrings",
+        "type": "Pull",
+        "equipment": "Machine",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_leg_ext",
+        "title": "Leg Extension",
+        "primary_muscle": "Quads",
+        "type": "Push",
+        "equipment": "Machine",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_calf_raise",
+        "title": "Calf Raises",
+        "primary_muscle": "Calves",
+        "type": "Push",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_russian_twist",
+        "title": "Russian Twists",
+        "primary_muscle": "Core",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_mountain_climber",
+        "title": "Mountain Climbers",
+        "primary_muscle": "Core",
+        "type": "Cardio",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_jumping_jack",
+        "title": "Jumping Jacks",
+        "primary_muscle": "Full Body",
+        "type": "Cardio",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_high_knees",
+        "title": "High Knees",
+        "primary_muscle": "Legs",
+        "type": "Cardio",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_butt_kicks",
+        "title": "Butt Kicks",
+        "primary_muscle": "Legs",
+        "type": "Cardio",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_jump_squat",
+        "title": "Jump Squats",
+        "primary_muscle": "Legs",
+        "type": "Squat",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_pushup_incline",
+        "title": "Incline Push-ups",
+        "primary_muscle": "Chest",
+        "type": "Push",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_pushup_decline",
+        "title": "Decline Push-ups",
+        "primary_muscle": "Chest",
+        "type": "Push",
+        "equipment": "Bodyweight",
+        "difficulty": "Advanced",
+        "video": "url"
+    },
+    {
+        "id": "ex_dip",
+        "title": "Tricep Dips",
+        "primary_muscle": "Triceps",
+        "type": "Push",
+        "equipment": "Chair/Bench",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_superman",
+        "title": "Superman",
+        "primary_muscle": "Lower Back",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_glute_bridge",
+        "title": "Glute Bridge",
+        "primary_muscle": "Glutes",
+        "type": "Hinge",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_step_up",
+        "title": "Step Ups",
+        "primary_muscle": "Legs",
+        "type": "Lunge",
+        "equipment": "Chair/Bench",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_wall_sit",
+        "title": "Wall Sit",
+        "primary_muscle": "Legs",
+        "type": "Squat",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_side_plank",
+        "title": "Side Plank",
+        "primary_muscle": "Core",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_bicycle_crunch",
+        "title": "Bicycle Crunches",
+        "primary_muscle": "Core",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_leg_raise",
+        "title": "Leg Raises",
+        "primary_muscle": "Core",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_flutter_kicks",
+        "title": "Flutter Kicks",
+        "primary_muscle": "Core",
+        "type": "Core",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_surya_namaskar",
+        "title": "Surya Namaskar",
+        "primary_muscle": "Full Body",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Intermediate",
+        "video": "url"
+    },
+    {
+        "id": "ex_cobra",
+        "title": "Cobra Pose",
+        "primary_muscle": "Back",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_down_dog",
+        "title": "Downward Dog",
+        "primary_muscle": "Shoulders",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_warrior",
+        "title": "Warrior Pose",
+        "primary_muscle": "Legs",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_tree",
+        "title": "Tree Pose",
+        "primary_muscle": "Balance",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_child_pose",
+        "title": "Child's Pose",
+        "primary_muscle": "Relaxation",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_cat_cow",
+        "title": "Cat-Cow Stretch",
+        "primary_muscle": "Back",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_seated_twist",
+        "title": "Seated Spinal Twist",
+        "primary_muscle": "Back",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_butterfly",
+        "title": "Butterfly Stretch",
+        "primary_muscle": "Legs",
+        "type": "Yoga",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_neck_roll",
+        "title": "Neck Rolls",
+        "primary_muscle": "Neck",
+        "type": "Stretch",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    },
+    {
+        "id": "ex_shoulder_shrug",
+        "title": "Shoulder Shrugs",
+        "primary_muscle": "Shoulders",
+        "type": "Stretch",
+        "equipment": "Bodyweight",
+        "difficulty": "Beginner",
+        "video": "url"
+    }
+]

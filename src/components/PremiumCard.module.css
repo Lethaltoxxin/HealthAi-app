@@ -1,0 +1,42 @@
+.card {
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--duration-fast), background-color var(--duration-fast);
+    cursor: pointer;
+}
+
+/* Variant: Glass */
+.glass {
+    background: var(--glass-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
+    color: var(--text-main);
+}
+
+/* Variant: Filled */
+.filled {
+    background: var(--bg-card);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-sm);
+    color: var(--text-main);
+}
+
+/* Variant: Outline */
+.outline {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-main);
+}
+
+/* Variant: Neobrutal (Optional for specialized cards) */
+.neobrutal {
+    background: var(--primary);
+    color: var(--bg-app);
+    border: 2px solid var(--text-main);
+    box-shadow: 4px 4px 0 var(--text-main);
+    border-radius: var(--radius-md);
+}

@@ -1,0 +1,97 @@
+.container {
+    padding: 24px;
+    background: #FAFAFA;
+    min-height: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.backBtn {
+    background: none;
+    padding: 8px;
+    color: var(--text-dark);
+}
+
+.header h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.infoCard {
+    text-align: center;
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.illustration {
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+
+.infoCard h2 {
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.infoCard p {
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.5;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.whatsappBtn {
+    background: #25D366;
+    color: white;
+    padding: 16px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.smsBtn {
+    background: var(--text-dark);
+    color: white;
+    padding: 16px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.listSection h3 {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.empty {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 14px;
+}

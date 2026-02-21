@@ -1,0 +1,446 @@
+/* ──── Container ──── */
+.container {
+    min-height: 100vh;
+    background: #F8FAFC;
+    padding-bottom: 32px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ──── Loading State ──── */
+.loadingScreen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #F8FAFC;
+    color: #64748B;
+    font-size: 15px;
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #E2E8F0;
+    border-top-color: #10B981;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ──── Header ──── */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+
+.iconBtn:hover {
+    background: #F1F5F9;
+}
+
+.headerTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0;
+}
+
+/* ──── Day Strip ──── */
+.dayStrip {
+    display: flex;
+    gap: 6px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.dayStrip::-webkit-scrollbar {
+    display: none;
+}
+
+.dayCard {
+    min-width: 52px;
+    padding: 10px 8px;
+    background: white;
+    color: #64748B;
+    border-radius: 16px;
+    border: 1.5px solid #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.activeDay {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    border-color: transparent;
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+}
+
+.dayName {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dayNum {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.dayDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* ──── Overview Card ──── */
+.overviewCard {
+    margin: 0 20px 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 24px;
+    display: flex;
+    gap: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #F1F5F9;
+}
+
+.overviewLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.calorieRing {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.calorieRing svg {
+    width: 100%;
+    height: 100%;
+}
+
+.calorieCenter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calorieNum {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1;
+}
+
+.calorieSub {
+    font-size: 11px;
+    color: #94A3B8;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.calorieInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.calorieLabel {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+}
+
+.calorieTarget {
+    font-size: 11px;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ──── Macro Tags ──── */
+.macroGrid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+.macroTag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 14px;
+}
+
+.macroIcon {
+    display: flex;
+    align-items: center;
+}
+
+.macroText {
+    display: flex;
+    flex-direction: column;
+}
+
+.macroVal {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.macroLabel {
+    font-size: 11px;
+    color: #64748B;
+    font-weight: 500;
+}
+
+/* ──── Meals Section ──── */
+.mealsSection {
+    padding: 0 20px;
+}
+
+.sectionTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mealsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ──── Meal Card ──── */
+.mealCard {
+    background: white;
+    padding: 16px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    border: 1px solid #F1F5F9;
+    transition: box-shadow 0.2s;
+}
+
+.mealCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.mealHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mealIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.mealInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.mealType {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.mealTitle {
+    margin: 2px 0 0;
+    font-size: 15px;
+    color: #0F172A;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mealMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.mealCal {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+.mealCal small {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94A3B8;
+}
+
+/* ──── Expanded Content ──── */
+.expandedContent {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #F1F5F9;
+    overflow: hidden;
+}
+
+.tagsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    background: #F8FAFC;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #475569;
+    font-weight: 500;
+}
+
+.ingTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+    margin: 0 0 8px;
+}
+
+.ingList {
+    padding-left: 20px;
+    margin: 0 0 16px;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.ingList li {
+    margin-bottom: 2px;
+}
+
+.recipeBtn {
+    width: 100%;
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.recipeBtn:hover {
+    opacity: 0.9;
+}
+
+/* ──── Footer ──── */
+.footer {
+    margin-top: 28px;
+    padding: 0 20px;
+}
+
+.regenerateBtn {
+    width: 100%;
+    padding: 14px;
+    background: white;
+    border: 1.5px solid #E2E8F0;
+    color: #475569;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.regenerateBtn:hover {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+}
+
+/* ──── Responsive ──── */
+@media (max-width: 400px) {
+    .overviewCard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .macroGrid {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .macroTag {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+        gap: 4px;
+        padding: 8px;
+    }
+}

@@ -1,0 +1,209 @@
+.container {
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: var(--brand-deep, #0B1F3B);
+    margin: 0;
+}
+
+.backBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: -8px;
+    display: flex;
+    align-items: center;
+}
+
+/* ──── Featured Card ──── */
+.featured {
+    background: #0B1F3B;
+    border-radius: 20px;
+    padding: 24px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 16px rgba(11, 31, 59, 0.2);
+}
+
+.featuredContent h2 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+}
+
+.featuredContent p {
+    margin: 0 0 16px 0;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.playBtn {
+    background: var(--primary-green, #14B8A6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    font-size: 14px;
+}
+
+.playBtn:hover {
+    box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3);
+}
+
+.playBtn:active {
+    transform: scale(0.95);
+}
+
+.featuredImage {
+    font-size: 56px;
+}
+
+/* ──── Sections ──── */
+.section {
+    margin-bottom: 28px;
+}
+
+.sectionTitle {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #374151;
+}
+
+/* ──── Track List ──── */
+.trackList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trackCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.trackIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.trackInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.trackTitle {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.trackDuration {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.trackPlay {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+.trackCard:hover .trackPlay {
+    transform: scale(1.1);
+}
+
+/* ──── Legacy grid (unused but kept for safety) ──── */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardIcon {
+    margin-bottom: 12px;
+}
+
+.cardInfo h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+
+.cardInfo p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.playingOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    backdrop-filter: blur(2px);
+}
