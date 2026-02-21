@@ -3,15 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAj5NXd5kVZvgYnkaQhx9SzLdugGvZ-o_c",
-  authDomain: "healthai-app-ab6c7.firebaseapp.com",
-  projectId: "healthai-app-ab6c7",
-  storageBucket: "healthai-app-ab6c7.firebasestorage.app",
-  messagingSenderId: "268527581953",
-  appId: "1:268527581953:web:cb6c80842395e28e3fb900",
-  measurementId: "G-0BQD8R9L25"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 // Initialize Firebase
