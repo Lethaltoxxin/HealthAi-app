@@ -28,7 +28,8 @@ export default function Progress() {
     const handleLog = async () => {
         if (!weight) return;
         try {
-            await fetch('http://localhost:8000/api/events', {
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+            await fetch(`${API_URL}/api/events`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
