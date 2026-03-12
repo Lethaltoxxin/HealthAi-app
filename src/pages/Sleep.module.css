@@ -1,0 +1,831 @@
+/* ─── Sleep Page — Headspace-Inspired Dark Purple Theme ─── */
+.sleepPage {
+    min-height: 100vh;
+    background: #0f051d;
+    color: #fff;
+    padding-bottom: 100px;
+}
+
+/* ─── Hero Zone ─── */
+.heroZone {
+    position: relative;
+    background: linear-gradient(180deg, #1a0a2e 0%, #2d1b69 50%, #1a0a2e 100%);
+    padding: 0 var(--page-px);
+    padding-top: var(--sp-12);
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+/* Starfield / ambient effects */
+.stars {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(1px 1px at 15% 20%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 35% 60%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 55% 15%, rgba(255, 255, 255, 0.25), transparent),
+        radial-gradient(1px 1px at 75% 45%, rgba(255, 255, 255, 0.15), transparent),
+        radial-gradient(1px 1px at 80% 80%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 25% 85%, rgba(255, 255, 255, 0.15), transparent),
+        radial-gradient(1.5px 1.5px at 90% 10%, rgba(167, 139, 250, 0.4), transparent),
+        radial-gradient(1.5px 1.5px at 10% 50%, rgba(167, 139, 250, 0.3), transparent);
+    pointer-events: none;
+}
+
+.bokeh1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(124, 58, 237, 0.15);
+    filter: blur(80px);
+    top: -50px;
+    right: -40px;
+    pointer-events: none;
+}
+
+.bokeh2 {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.12);
+    filter: blur(60px);
+    bottom: 40px;
+    left: -30px;
+    pointer-events: none;
+}
+
+.bokeh3 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(167, 139, 250, 0.1);
+    filter: blur(50px);
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+}
+
+.topBar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: var(--sp-16);
+}
+
+.backBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 200ms ease;
+}
+
+.backBtn:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.pageTitle {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    flex: 1;
+}
+
+.dateLabel {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 5px 12px;
+    border-radius: 16px;
+}
+
+/* Hero Content */
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: var(--sp-20) 0;
+}
+
+/* Score Ring */
+.scoreRing {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreGlow {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(167, 139, 250, 0.2);
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+.ringTrack {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 8;
+}
+
+.ringFill {
+    fill: none;
+    stroke: url(#sleepGrad);
+    stroke: #a78bfa;
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.ringCenter {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.ringScore {
+    font-size: 42px;
+    font-weight: 800;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.ringLabel {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* Hero Stats */
+.heroStats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px 24px;
+    width: 100%;
+    max-width: 360px;
+}
+
+.heroStat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.heroStatVal {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.heroStatLabel {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.heroDivider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+/* Tab Navigation */
+.tabRow {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: var(--sp-16) 0;
+    margin-top: 8px;
+}
+
+.tabBtn {
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 200ms ease;
+}
+
+.tabBtn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.tabActive {
+    background: rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.4);
+    color: #c4b5fd;
+}
+
+/* ─── Content Zone ─── */
+.contentZone {
+    padding: var(--sp-20) var(--page-px);
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-24, 24px);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionLabel {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.sectionIcon {
+    color: rgba(167, 139, 250, 0.6);
+}
+
+.sectionDesc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.5;
+    margin: 0;
+    margin-top: -4px;
+}
+
+.seeAllBtn {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a78bfa;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 200ms ease;
+}
+
+.seeAllBtn:hover {
+    color: #c4b5fd;
+}
+
+/* ─── Stages Card ─── */
+.stagesCard {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.timeAxis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+    font-variant-numeric: tabular-nums;
+}
+
+.stageBars {
+    display: flex;
+    height: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+    gap: 2px;
+}
+
+.stageBar {
+    border-radius: 4px;
+    transition: flex 0.8s ease;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.legendDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* ─── Featured Sleepcast ─── */
+.featuredCast {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+.featuredCastBg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #1a0a2e 70%, #0c4a6e 100%);
+    z-index: 0;
+}
+
+.featuredCastContent {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.featuredCastEmoji {
+    font-size: 40px;
+}
+
+.featuredCastBadge {
+    align-self: flex-start;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #67e8f9;
+    background: rgba(103, 232, 249, 0.12);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.featuredCastTitle {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+}
+
+.featuredCastDesc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.featuredCastMeta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 4px;
+}
+
+.playBtnLg {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: #a78bfa;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.playBtnLg:hover {
+    background: #8b5cf6;
+    transform: scale(1.03);
+}
+
+/* ─── Wind Down Cards ─── */
+.carouselRow {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.windDownCard {
+    min-width: 130px;
+    padding: 20px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.windDownCard:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.windDownIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.windDownTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.windDownDuration {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 500;
+}
+
+/* ─── Sleep Sounds Grid (Preview) ─── */
+.soundsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.soundCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.soundCard:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.soundIconWrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.soundTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    flex: 1;
+}
+
+.soundPlayBtn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 200ms ease;
+}
+
+.soundPlayBtn:hover {
+    transform: scale(1.1);
+}
+
+/* ─── Insight Cards ─── */
+.insightCard {
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.insightAccent {
+    width: 4px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.insightContent {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.insightTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.insightDesc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.5;
+}
+
+/* ─── Sleepcast List (Full Tab) ─── */
+.sleepcastList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sleepcastItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.sleepcastItem:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(2px);
+}
+
+.sleepcastEmoji {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sleepcastInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sleepcastTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sleepcastDesc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.4;
+}
+
+.sleepcastMeta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 2px;
+}
+
+.sleepcastPlayBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 200ms ease;
+}
+
+.sleepcastPlayBtn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* ─── Music Cards ─── */
+.musicCard {
+    min-width: 140px;
+    padding: 20px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.musicCard:hover {
+    transform: translateY(-2px);
+}
+
+.musicTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+}
+
+.musicDuration {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.musicPlayBtn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.musicPlayBtn:hover {
+    transform: scale(1.1);
+}
+
+/* ─── Sounds Full Grid ─── */
+.soundsFullGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.soundFullCard {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.soundFullCard:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.03);
+}
+
+.soundFullIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.soundFullTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.soundFullPlay {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.soundFullPlay:hover {
+    transform: scale(1.1);
+}
+
+/* ─── Tips ─── */
+.tipsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tipCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tipEmoji {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.tipContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tipTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.tipDesc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.5;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 380px) {
+    .soundsFullGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .heroStats {
+        padding: 14px 16px;
+    }
+}

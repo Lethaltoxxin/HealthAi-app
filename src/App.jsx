@@ -27,6 +27,7 @@ import Mindfulness from './pages/Mindfulness';
 import WorkoutBuilder from './pages/WorkoutBuilder';
 import Progress from './pages/Progress';
 
+
 const Login = () => <IntroModal />; // Redirect to Intro for now
 
 function AppRoutes() {
@@ -41,6 +42,8 @@ function AppRoutes() {
       <Route path="/intro" element={<IntroModal />} />
       <Route path="/onboarding" element={<OnboardingFlow />} />
       <Route path="/loading" element={<LoadingScreen />} />
+
+
 
       {/* Protected Layout Routes */}
       <Route element={<Layout />}>

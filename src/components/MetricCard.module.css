@@ -1,0 +1,64 @@
+.card {
+    border-radius: var(--radius-card);
+    padding: var(--sp-16) var(--sp-20);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* small gap between elements */
+    box-shadow: var(--shadow-card);
+    position: relative;
+    /* Optional accent border can be added by parent components via className override */
+}
+
+/* Variants */
+.light {
+    background: var(--text-white);
+}
+
+.dark {
+    background: var(--indigo-800);
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.value {
+    font-size: 36px;
+    font-weight: 800;
+    font-family: var(--font-display);
+    line-height: 1.1;
+    margin-top: 2px;
+}
+
+.light .value {
+    color: var(--text-dark);
+}
+
+.dark .value {
+    color: var(--text-white);
+}
+
+.trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.trendValue {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.trendUp {
+    color: var(--score-green);
+}
+
+.trendDown {
+    color: var(--score-red);
+}

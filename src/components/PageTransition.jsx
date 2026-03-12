@@ -1,42 +1,25 @@
 import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 
 const pageVariants = {
-    initial: {
-        opacity: 0,
-        y: 20,
-        scale: 0.98
-    },
-    in: {
-        opacity: 1,
-        y: 0,
-        scale: 1
-    },
-    out: {
-        opacity: 0,
-        y: -20,
-        scale: 1.02
-    }
+    initial: { opacity: 0, y: 12 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -8 },
 };
 
 const pageTransition = {
-    type: 'tween',
-    ease: [0.4, 0, 0.2, 1], // ease-smooth
-    duration: 0.3
+    duration: 0.28,
+    ease: [0.25, 0.46, 0.45, 0.94],
 };
 
 export default function PageTransition({ children }) {
-    const location = useLocation();
-
     return (
         <motion.div
-            key={location.pathname}
-            initial="initial"
-            animate="in"
-            exit="out"
             variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             transition={pageTransition}
-            style={{ width: '100%', height: '100%' }}
+            style={{ minHeight: '100%' }}
         >
             {children}
         </motion.div>

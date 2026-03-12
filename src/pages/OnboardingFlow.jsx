@@ -35,6 +35,7 @@ export default function OnboardingFlow() {
             setDirection(1);
             setStep(prev => prev + 1);
         } else {
+            navigate('/loading');
             try {
                 const userId = currentUser?.uid || "demo_user";
                 await setDoc(doc(db, "users", userId), {
@@ -44,8 +45,6 @@ export default function OnboardingFlow() {
                 }, { merge: true });
             } catch (error) {
                 console.error("Error saving profile:", error);
-            } finally {
-                navigate('/loading');
             }
         }
     };

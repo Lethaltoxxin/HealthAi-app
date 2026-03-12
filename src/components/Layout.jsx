@@ -1,30 +1,21 @@
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { Outlet, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import BottomNavigation from './BottomNavigation';
-import SideDrawer from './SideDrawer';
+import PageTransition from './PageTransition';
 import styles from './Layout.module.css';
 
 export default function Layout() {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const location = useLocation();
 
     return (
         <div className={styles.container}>
-            {/* Mobile Header */}
-            <header className={styles.header}>
-                <button onClick={() => setIsDrawerOpen(true)} className={styles.menuBtn}>
-                    <Menu size={24} />
-                </button>
-                <span className={styles.logo}>HealthAi</span>
-                <div style={{ width: 24 }} /> {/* Spacer for centering */}
-            </header>
-
-            <SideDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-
             <main className={styles.main}>
-                <Outlet />
+                <AnimatePresence mode="wait">
+                    <PageTransition key={location.pathname}>
+                        <Outlet />
+                    </PageTransition>
+                </AnimatePresence>
             </main>
-
             <BottomNavigation />
         </div>
     );

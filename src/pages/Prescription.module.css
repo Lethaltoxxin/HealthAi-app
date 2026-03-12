@@ -1,6 +1,6 @@
 .container {
     min-height: 100vh;
-    background: #F8FAFC;
+    background: var(--bg-page);
     max-width: 600px;
     margin: 0 auto;
     display: flex;
@@ -11,9 +11,9 @@
     display: flex;
     align-items: center;
     padding: 24px;
-    background: white;
+    background: var(--bg-sheet);
     gap: 16px;
-    border-bottom: 1px solid #F1F5F9;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .backBtn {
@@ -29,7 +29,7 @@
     font-size: 20px;
     font-weight: 700;
     margin: 0;
-    color: #0F172A;
+    color: var(--text-primary);
 }
 
 .emptyState {
@@ -94,7 +94,7 @@
 
 .emptyState h2 {
     font-size: 24px;
-    color: #0F172A;
+    color: var(--text-primary);
     margin: 0 0 12px;
 }
 
@@ -155,13 +155,13 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    background: white;
-    border: 1px solid #E2E8F0;
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-default);
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
-    color: #475569;
+    color: var(--text-secondary);
     cursor: pointer;
 }
 
@@ -171,7 +171,7 @@
 }
 
 .medCard {
-    background: white;
+    background: var(--bg-sheet);
     padding: 16px;
     border-radius: 16px;
     display: flex;
@@ -250,8 +250,8 @@
     align-items: center;
     gap: 4px;
     font-size: 11px;
-    color: #D97706;
-    background: #FFFBEB;
+    color: var(--warning);
+    background: var(--bg-surface-3);
     padding: 4px 8px;
     border-radius: 6px;
     width: fit-content;

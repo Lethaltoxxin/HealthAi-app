@@ -1,309 +1,409 @@
+/* APPLE HEALTH UI DESIGN (DARK THEME) + LIVE SEARCH */
+
 .container {
+    padding: 24px;
+    padding-bottom: 140px;
+    background: var(--bg-page);
     min-height: 100vh;
-    background: #F8FAFC;
-    max-width: 600px;
-    margin: 0 auto;
-    padding-bottom: 90px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    background: white;
+    margin-bottom: 24px;
+    padding-top: 10px;
 }
 
-.header h1 {
-    font-size: 20px;
+.title {
+    font-size: 32px;
+    font-family: var(--font-display);
+    font-weight: 700;
     margin: 0;
-    color: #0F172A;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
 }
 
-.iconBtn {
-    background: none;
+.editProfileBtn {
+    background: var(--bg-surface-2);
+    color: var(--accent-2);
     border: none;
-    cursor: pointer;
-    padding: 8px;
-    color: #475569;
-}
-
-.dateStrip {
-    display: flex;
-    gap: 12px;
-    padding: 16px;
-    background: white;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin-bottom: 24px;
-}
-
-.dateCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 50px;
-    padding: 12px 8px;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: #F1F5F9;
-}
-
-.activeDate {
-    background: #0F172A;
-    color: white;
-    transform: scale(1.05);
-}
-
-.dayLabel {
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 4px;
-    opacity: 0.7;
-}
-
-.dateLabel {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.caloriesCard {
-    margin: 0 20px 20px;
-    background: #0F172A;
-    color: white;
-    padding: 24px;
-    border-radius: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.caloriesValue {
-    display: block;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 4px;
-}
-
-.caloriesLabel {
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-.caloriesRing {
-    position: relative;
-    width: 64px;
-    height: 64px;
-}
-
-.ringOuter {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    display: grid;
-    place-items: center;
-}
-
-.ringInner {
-    display: grid;
-    place-items: center;
-}
-
-.macrosGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding: 0 20px;
-    margin-bottom: 24px;
-}
-
-.macroCard {
-    background: white;
-    padding: 16px;
+    padding: 8px 16px;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.macroHeader {
-    display: flex;
-    flex-direction: column;
-}
-
-.macroValue {
-    font-size: 16px;
-    font-weight: 700;
-    color: #0F172A;
-}
-
-.macroLabel {
-    font-size: 11px;
-    color: #64748B;
-}
-
-.miniRing {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 3px solid;
-    display: grid;
-    place-items: center;
+    font-weight: 600;
+    cursor: pointer;
     font-size: 14px;
+    transition: background 0.2s;
 }
 
-.mealsContainer {
-    padding: 0 20px;
+.editProfileBtn:active {
+    background: var(--bg-surface-3);
+}
+
+/* ONBOARDING FORM */
+.onboardingCard {
+    background: var(--bg-surface-1);
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card-md);
+    border: 1px solid var(--border-subtle);
+}
+
+.onboardingCard h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.formGroup {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.mealSection {
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.mealHeader {
+.inputRow {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.mealHeader h3 {
-    margin: 0;
-    font-size: 16px;
-    color: #0F172A;
-}
-
-.mealRight {
-    display: flex;
-    align-items: center;
     gap: 12px;
 }
 
-.mealRight span {
-    font-size: 13px;
-    color: #64748B;
+.formGroup input,
+.formGroup select {
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-default);
+    padding: 14px;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 16px;
+    flex: 1;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
-.addBtn {
-    width: 28px;
-    height: 28px;
-    background: #00A8A8;
+.formGroup input:focus,
+.formGroup select:focus {
+    border-color: var(--accent-2);
+}
+
+.formGroup input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.submitBtn {
+    background: #0a84ff;
+    color: white;
     border: none;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
+    margin-top: 8px;
 }
 
-.mealPlaceholder {
-    font-size: 14px;
-    color: #94A3B8;
-    font-style: italic;
+/* DASHBOARD & RINGS */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* LIVE SEARCH BAR */
+.searchSection {
+    position: relative;
+    z-index: 100;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    background: var(--bg-surface-1);
+    border-radius: 16px;
+    padding: 12px 16px;
+    gap: 12px;
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-card);
+}
+
+.searchIcon {
+    color: var(--text-tertiary);
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    outline: none;
+}
+
+.searchInput::placeholder {
+    color: var(--text-tertiary);
+}
+
+.clearSearchBtn {
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* SEARCH DROPDOWN */
+.searchResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    background: var(--bg-surface-1);
+    border-radius: 16px;
+    box-shadow: var(--shadow-modal);
+    border: 1px solid var(--border-strong);
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     padding: 8px 0;
 }
 
-/* Plan Generator */
-.planGenerator {
-    margin: 24px 20px 0;
-    background: white;
-    padding: 24px;
-    border-radius: 20px;
-    border: 1px solid #E2E8F0;
-}
-
-.generatorHeader {
+.searchResultItem {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background-color 0.2s;
 }
 
-.generatorHeader h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #0F172A;
+.searchResultItem:last-child {
+    border-bottom: none;
 }
 
-.badge {
-    background: #E0F2FE;
-    color: #0284C7;
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 4px;
+.searchResultItem:hover {
+    background: var(--bg-surface-2);
+}
+
+.foodMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.foodName {
+    font-size: 15px;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
-.generatorCta p {
-    color: #64748B;
-    font-size: 14px;
-    margin: 0 0 16px;
+.foodStats {
+    font-size: 12px;
+    color: var(--text-secondary);
 }
 
-.generateBtn {
-    width: 100%;
-    background: #0F172A;
-    color: white;
-    padding: 12px;
-    border-radius: 12px;
+.addFoodBtn {
+    background: var(--accent-2);
+    color: var(--text-inverse);
     border: none;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
 }
 
-.generateBtn:disabled {
-    opacity: 0.7;
-    cursor: wait;
+.noResults {
+    padding: 16px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
 }
 
-.planPreview {
+
+/* APPLE HEALTH RINGS */
+.ringCard {
+    background: var(--bg-surface-1);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow-card-md);
+    border: 1px solid var(--border-subtle);
+}
+
+.ringWrapper {
+    width: 160px;
+    height: 160px;
+}
+
+.progressRing {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ringBg {
+    fill: none;
+    stroke-width: 16;
+    opacity: 0.15;
+}
+
+.ringProgress {
+    fill: none;
+    stroke-width: 16;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease-out;
+    filter: drop-shadow(0 0 6px currentcolor);
+}
+
+.bgRed,
+.progRed {
+    stroke: #ff2a55;
+}
+
+.bgGreen,
+.progGreen {
+    stroke: #00f560;
+}
+
+.bgBlue,
+.progBlue {
+    stroke: #08f6ff;
+}
+
+
+/* APPLE HEALTH FITNESS STATS SIDEBAR */
+.fitnessStats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.fStat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fStatLabel {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.fStatVal {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.fUnit {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+/* MEAL PLAN SECTION */
+.planHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.planHeader h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.regenBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-surface-2);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mealList {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.planDay {
-    padding: 12px;
-    background: #F8FAFC;
-    border-radius: 12px;
+.mealCard {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-default);
+    border-radius: 16px;
+    padding: 16px;
+    transition: border-color 0.3s, opacity 0.3s;
+    box-shadow: var(--shadow-card);
 }
 
-.planDay span {
-    display: block;
+.mealCard.logged {
+    border-color: #00f55c;
+    opacity: 0.8;
+}
+
+.mealMain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mealTime {
     font-size: 12px;
-    color: #64748B;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
     margin-bottom: 4px;
-    font-weight: 600;
 }
 
-.planDay p {
+.mealName {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mealMacros {
     margin: 0;
-    font-size: 14px;
-    color: #0F172A;
-    font-weight: 500;
+    font-size: 13px;
+    color: var(--text-tertiary);
 }
 
-.viewFullBtn {
-    width: 100%;
-    background: white;
-    border: 1px solid #E2E8F0;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 600;
-    color: #0F172A;
+.logBtn {
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-default);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    margin-top: 8px;
+    transition: all 0.3s;
+}
+
+.checkIcon {
+    color: var(--text-tertiary);
+}
+
+.logActive {
+    background: #00f55c;
+}
+
+.logActive .checkIcon {
+    color: #000000;
 }

@@ -1,0 +1,26 @@
+.chip {
+    background: linear-gradient(135deg, rgba(0, 229, 192, 0.1), rgba(45, 32, 128, 0.05));
+    border: 1px solid rgba(0, 229, 192, 0.25);
+    border-radius: var(--radius-icon);
+    /* 14px */
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon {
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.4;
+}

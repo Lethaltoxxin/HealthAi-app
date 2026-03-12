@@ -16,7 +16,8 @@ export default function Prescription() {
         trackEvent('prescription_scan_start');
 
         try {
-            // Create a dummy file for demo if no real file input
+            // Fake an OCR extraction delay for realism
+            await new Promise(r => setTimeout(r, 2000));
             const formData = new FormData();
             formData.append('file', new Blob(['test'], { type: 'text/plain' }), 'prescription.jpg');
 
@@ -52,6 +53,17 @@ export default function Prescription() {
         trackEvent('med_add', { medName });
         // Simulate adding to tracker
         alert(`Added ${medName} to your schedule!`);
+    };
+
+    const handleDiscussAI = () => {
+        const medsList = meds.map(m => `${m.name} (${m.dose}, ${m.frequency})`).join(', ');
+        sessionStorage.setItem('pendingScanResult', JSON.stringify({
+            analysis: `I've analyzed your prescription. It includes: ${medsList}. What would you like to know about these medications?`,
+            documentType: 'prescription',
+            filename: 'Scanned_Prescription.jpg',
+            extractedText: `Detected meds: ${medsList}`
+        }));
+        navigate('/chat');
     };
 
     return (
@@ -120,7 +132,16 @@ export default function Prescription() {
                             ))}
                         </div>
 
-                        <div className={styles.disclaimer}>
+                        <div className={styles.actionRow} style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
+                            <button className={styles.addManualBtn} style={{ flex: 1, padding: '16px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', color: '#F2EEE8', border: 'none', fontWeight: 600 }} onClick={() => setMeds([])}>
+                                Scan Another
+                            </button>
+                            <button className={styles.scanBtn} style={{ flex: 1, margin: 0 }} onClick={handleDiscussAI}>
+                                Analyze with AI
+                            </button>
+                        </div>
+
+                        <div className={styles.disclaimer} style={{ marginTop: '24px', textAlign: 'center', opacity: 0.6, fontSize: '13px' }}>
                             Please verify all details with your actual prescription before taking medication.
                         </div>
                     </div>

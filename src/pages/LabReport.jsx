@@ -42,6 +42,8 @@ export default function LabReport() {
         trackEvent('report_upload_start');
 
         try {
+            // Fake a beautiful 2.5s analysis delay for UX Polish
+            await new Promise(r => setTimeout(r, 2500));
             const result = await mockApi.parseReport(file);
             setReportData(result);
             trackEvent('report_parsed', { id: result.reportId });
@@ -50,6 +52,17 @@ export default function LabReport() {
         } finally {
             setUploading(false);
         }
+    };
+
+    const handleAskAI = () => {
+        // Pass context to chat payload
+        sessionStorage.setItem('pendingScanResult', JSON.stringify({
+            analysis: "I've reviewed your latest blood work.",
+            documentType: 'report',
+            filename: 'My_Lab_Report.pdf',
+            extractedText: JSON.stringify(reportData.parsed)
+        }));
+        navigate('/chat');
     };
 
     return (
@@ -126,7 +139,7 @@ export default function LabReport() {
                             ))}
                         </div>
 
-                        <button className={styles.actionBtn}>
+                        <button className={styles.actionBtn} onClick={handleAskAI}>
                             Ask AI about these results
                         </button>
                     </div>

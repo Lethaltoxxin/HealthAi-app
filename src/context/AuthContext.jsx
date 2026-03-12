@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth, db } from "../services/firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -13,16 +11,18 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Sign in with Google (Demo purposes, easiest to implement quickly)
-    // Can be expanded to Email/Phone as per requirements
     const login = async () => {
+        if (!auth) {
+            console.warn('Firebase auth not available');
+            return null;
+        }
+        const { signInWithPopup, GoogleAuthProvider } = await import("firebase/auth");
+        const { doc, setDoc, getDoc } = await import("firebase/firestore");
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
-            // Create user record if not exists
             const userRef = doc(db, "users", result.user.uid);
             const userSnap = await getDoc(userRef);
-
             if (!userSnap.exists()) {
                 await setDoc(userRef, {
                     email: result.user.email,
@@ -38,17 +38,52 @@ export function AuthProvider({ children }) {
         }
     };
 
-    const logout = () => {
+    const logout = async () => {
+        if (!auth) return;
+        const { signOut } = await import("firebase/auth");
         return signOut(auth);
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
+        if (!auth) {
+            // No Firebase — skip auth, render immediately
             setLoading(false);
-        });
+            return;
+        }
 
-        return unsubscribe;
+        let resolved = false;
+
+        const importAndSubscribe = async () => {
+            try {
+                const { onAuthStateChanged } = await import("firebase/auth");
+                const unsubscribe = onAuthStateChanged(auth, (user) => {
+                    resolved = true;
+                    setCurrentUser(user);
+                    setLoading(false);
+                });
+                return unsubscribe;
+            } catch (e) {
+                console.warn('Firebase auth subscription failed:', e);
+                setLoading(false);
+                return () => { };
+            }
+        };
+
+        let unsub = () => { };
+        importAndSubscribe().then(u => { unsub = u; });
+
+        // Fallback: if Firebase doesn't respond in 2 seconds, render anyway
+        const timeout = setTimeout(() => {
+            if (!resolved) {
+                console.warn('Firebase auth timeout — continuing as unauthenticated');
+                setLoading(false);
+            }
+        }, 2000);
+
+        return () => {
+            unsub();
+            clearTimeout(timeout);
+        };
     }, []);
 
     const value = {

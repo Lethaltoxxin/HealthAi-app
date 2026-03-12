@@ -1,147 +1,210 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Send, AlertTriangle, ShieldCheck, Stethoscope, Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { symptomCheck, logEvent } from '../api';
+import { AlertTriangle, Activity, ThermometerSun, Clock, ChevronRight, Sparkles, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './SymptomChecker.module.css';
+
+const quickSymptoms = ['Headache', 'Fatigue', 'Nausea', 'Sore throat', 'Fever', 'Cough', 'Dizziness', 'Back pain', 'Chest tightness'];
 
 export default function SymptomChecker() {
     const navigate = useNavigate();
-    const [messages, setMessages] = useState([
-        { role: 'assistant', text: "Hello. I'm your AI health assistant. Please describe your symptoms in detail." }
-    ]);
-    const [inputText, setInputText] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState(null);
+    const [mode, setMode] = useState('describe');
+    const [selectedSymptoms, setSelectedSymptoms] = useState([]);
+    const [description, setDescription] = useState('');
+    const [showResults, setShowResults] = useState(false);
+    const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-    const handleSend = async () => {
-        if (!inputText.trim()) return;
+    const toggleSymptom = (s) => {
+        setSelectedSymptoms(prev =>
+            prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s]
+        );
+    };
 
-        const userMsg = { role: 'user', text: inputText };
-        setMessages(prev => [...prev, userMsg]);
-        setInputText('');
-        setLoading(true);
-
-        try {
-            // Call API
-            const response = await symptomCheck({ text: userMsg.text });
-            setResult(response);
-
-            logEvent('symptom_check', {
-                input: userMsg.text,
-                triage: response.triage,
-                confidence: response.confidence
-            });
-
-            const botMsg = {
-                role: 'assistant',
-                text: response.explain,
-                isResult: true,
-                data: response
-            };
-            setMessages(prev => [...prev, botMsg]);
-        } catch (error) {
-            setMessages(prev => [...prev, { role: 'assistant', text: "I'm sorry, I encountered an error analyzing your symptoms. Please try again." }]);
-        } finally {
-            setLoading(false);
+    const handleAnalyze = async () => {
+        if (description.trim() || selectedSymptoms.length > 0) {
+            setIsAnalyzing(true);
+            // Simulate AI triage engine processing
+            await new Promise(r => setTimeout(r, 1500));
+            setIsAnalyzing(false);
+            setShowResults(true);
         }
     };
 
+    const handleDiscussAI = () => {
+        sessionStorage.setItem('pendingScanResult', JSON.stringify({
+            analysis: `I see you reported the following symptoms: ${selectedSymptoms.join(', ')}. ${description}. I've run a preliminary triage. Let's discuss when this started feeling worse.`,
+            documentType: 'symptom',
+            filename: 'Symptom_Triage_Report',
+            extractedText: `Reported symptoms: ${selectedSymptoms.join(', ')}. Details: ${description}`
+        }));
+        navigate('/chat');
+    };
+
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
-                <button onClick={() => navigate(-1)} className={styles.backBtn}>
-                    <ArrowLeft size={24} />
-                </button>
-                <h1>Symptom Checker</h1>
+        <div className={styles.symptomPage}>
+            <header className={styles.topBar}>
+                <h1 className={styles.pageTitle}>Symptom Checker</h1>
             </header>
 
-            <div className={styles.chatArea}>
-                <AnimatePresence>
-                    {messages.map((msg, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className={`${styles.message} ${msg.role === 'user' ? styles.userMsg : styles.botMsg}`}
-                        >
-                            <div className={styles.bubble}>
-                                {msg.text}
-                            </div>
-
-                            {msg.isResult && (
-                                <ResultCard data={msg.data} />
-                            )}
-                        </motion.div>
-                    ))}
-                    {loading && (
-                        <motion.div className={styles.loadingBubble}>
-                            <span className={styles.dot}></span>
-                            <span className={styles.dot}></span>
-                            <span className={styles.dot}></span>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-
-            <div className={styles.inputArea}>
-                <input
-                    type="text"
-                    value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                    placeholder="Describe your symptoms..."
-                    className={styles.input}
-                    disabled={loading}
-                />
-                <button onClick={handleSend} disabled={loading || !inputText.trim()} className={styles.sendBtn}>
-                    <Send size={20} />
+            {/* Mode Toggle */}
+            <div className={styles.modeToggle}>
+                <button className={`${styles.modeBtn} ${mode === 'describe' ? styles.modeActive : ''}`} onClick={() => setMode('describe')}>
+                    Describe
+                </button>
+                <button className={`${styles.modeBtn} ${mode === 'bodymap' ? styles.modeActive : ''}`} onClick={() => setMode('bodymap')}>
+                    Body Map
                 </button>
             </div>
-        </div>
-    );
-}
 
-function ResultCard({ data }) {
-    const isEmergency = data.triage === 'emergency';
-    const isConsult = data.triage === 'consult';
+            {mode === 'describe' ? (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.describeSection}>
+                    <textarea
+                        className={styles.symptomInput}
+                        placeholder="Describe your symptoms in detail..."
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        rows={4}
+                    />
 
-    return (
-        <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className={`${styles.resultCard} ${isEmergency ? styles.emergency : isConsult ? styles.consult : styles.safe}`}
-        >
-            <div className={styles.cardHeader}>
-                {isEmergency && <AlertTriangle size={24} />}
-                {isConsult && <Stethoscope size={24} />}
-                {!isEmergency && !isConsult && <ShieldCheck size={24} />}
-                <h3>{data.triage.toUpperCase().replace('_', ' ')}</h3>
-            </div>
+                    <div className={styles.quickSection}>
+                        <span className={styles.sectionLabel}>QUICK SELECT</span>
+                        <div className={styles.chipGrid}>
+                            {quickSymptoms.map((s) => (
+                                <button
+                                    key={s}
+                                    className={`${styles.chip} ${selectedSymptoms.includes(s) ? styles.chipActive : ''}`}
+                                    onClick={() => toggleSymptom(s)}
+                                >
+                                    {s}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
 
-            <div className={styles.reasons}>
-                <h4>Potential Causes:</h4>
-                <ul>
-                    {data.reasons.map((r, i) => <li key={i}>{r}</li>)}
-                </ul>
-            </div>
-
-            <div className={styles.actions}>
-                <h4>Recommended Action:</h4>
-                <ul>
-                    {data.actions.map((a, i) => <li key={i}>{a}</li>)}
-                </ul>
-            </div>
-
-            {isEmergency && (
-                <button className={styles.callBtn}>
-                    <Phone size={18} /> Call Emergency Services
-                </button>
+                    {/* Duration & Severity */}
+                    <div className={styles.metaRow}>
+                        <div className={styles.metaItem}>
+                            <Clock size={14} />
+                            <span>Duration</span>
+                            <select className={styles.metaSelect}>
+                                <option>Today</option>
+                                <option>2-3 days</option>
+                                <option>1 week</option>
+                                <option>2+ weeks</option>
+                            </select>
+                        </div>
+                        <div className={styles.metaItem}>
+                            <Activity size={14} />
+                            <span>Severity</span>
+                            <select className={styles.metaSelect}>
+                                <option>Mild</option>
+                                <option>Moderate</option>
+                                <option>Severe</option>
+                            </select>
+                        </div>
+                    </div>
+                </motion.div>
+            ) : (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.bodyMapSection}>
+                    <div className={styles.bodyMapPlaceholder}>
+                        <Activity size={64} />
+                        <span>Tap areas where you feel symptoms</span>
+                        <div className={styles.bodyOutline}>
+                            {['Head', 'Chest', 'Abdomen', 'Back', 'Arms', 'Legs'].map((area) => (
+                                <button
+                                    key={area}
+                                    className={`${styles.bodyArea} ${selectedSymptoms.includes(area) ? styles.bodyAreaActive : ''}`}
+                                    onClick={() => toggleSymptom(area)}
+                                >
+                                    {area}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
             )}
 
-            <div className={styles.confidence}>
-                Confidence: {Math.round(data.confidence * 100)}%
-            </div>
-        </motion.div>
+            <motion.button
+                className={styles.analyzeBtn}
+                onClick={handleAnalyze}
+                whileTap={{ scale: 0.97 }}
+                disabled={(!description.trim() && selectedSymptoms.length === 0) || isAnalyzing}
+            >
+                {isAnalyzing ? (
+                    'Analyzing...'
+                ) : (
+                    <>
+                        <Sparkles size={18} />
+                        Analyze Symptoms
+                    </>
+                )}
+            </motion.button>
+
+            {/* Results Modal */}
+            <AnimatePresence>
+                {showResults && (
+                    <>
+                        <motion.div
+                            className={styles.overlay}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setShowResults(false)}
+                        />
+                        <motion.div
+                            className={styles.resultsSheet}
+                            initial={{ y: '100%' }}
+                            animate={{ y: 0 }}
+                            exit={{ y: '100%' }}
+                            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                        >
+                            <div className={styles.sheetHandle} />
+                            <button className={styles.closeBtn} onClick={() => setShowResults(false)}>
+                                <X size={20} />
+                            </button>
+
+                            {/* Triage Banner */}
+                            <div className={styles.triageBanner} style={{ borderLeftColor: 'var(--accent-symptom)' }}>
+                                <AlertTriangle size={20} style={{ color: 'var(--accent-symptom)' }} />
+                                <div>
+                                    <span className={styles.triageLevel}>Monitor at Home</span>
+                                    <span className={styles.triageDesc}>Your symptoms are likely mild. Monitor for 24-48 hours.</span>
+                                </div>
+                            </div>
+
+                            {/* Condition Cards */}
+                            <div className={styles.conditionList}>
+                                {[
+                                    { name: 'Tension Headache', prob: 72, severity: 'Low' },
+                                    { name: 'Viral Upper Respiratory Infection', prob: 58, severity: 'Low' },
+                                    { name: 'Migraine', prob: 34, severity: 'Moderate' },
+                                ].map((c, i) => (
+                                    <div key={i} className={styles.conditionCard}>
+                                        <div className={styles.conditionHeader}>
+                                            <span className={styles.conditionName}>{c.name}</span>
+                                            <span className={styles.conditionProb}>{c.prob}%</span>
+                                        </div>
+                                        <div className={styles.probBar}>
+                                            <motion.div
+                                                className={styles.probFill}
+                                                initial={{ width: 0 }}
+                                                animate={{ width: `${c.prob}%` }}
+                                                transition={{ duration: 0.6, delay: i * 0.1 }}
+                                            />
+                                        </div>
+                                        <span className={styles.conditionSeverity}>Severity: {c.severity}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <button className={styles.discussBtn} onClick={handleDiscussAI}>
+                                <Sparkles size={16} />
+                                Discuss with AI Coach
+                            </button>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </div>
     );
 }

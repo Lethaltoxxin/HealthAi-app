@@ -1,0 +1,334 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: var(--cream-50);
+}
+
+/* ── HEADER ZONE ── */
+.headerZone {
+    background: var(--indigo-950);
+    padding-top: 44px;
+    /* status bar reserved */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.topRow {
+    display: flex;
+    align-items: center;
+    padding: var(--sp-12) var(--page-px);
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--indigo-600), #5200FF);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.greeting {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-left: var(--sp-12);
+    flex: 1;
+}
+
+.streakContainer {
+    display: flex;
+    align-items: center;
+}
+
+.streakPill {
+    background: rgba(255, 165, 0, 0.15);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    border-radius: var(--radius-pill);
+    padding: 6px 12px;
+    color: var(--mint-400);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.bellIcon {
+    color: var(--text-white);
+    margin-left: var(--sp-12);
+}
+
+.scoreSection {
+    padding: var(--sp-16) var(--page-px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-8);
+}
+
+.scoreLabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.scoreValContainer {
+    display: flex;
+    align-items: baseline;
+}
+
+.scoreNum {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--text-white);
+    letter-spacing: -2px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.scoreDenom {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin-left: 2px;
+}
+
+.pillsRow {
+    display: flex;
+    gap: var(--sp-8);
+    margin-top: var(--sp-16);
+    margin-bottom: var(--sp-16);
+}
+
+.statPill {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+    padding: 8px 16px;
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-8);
+}
+
+.statLabel {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.statVal {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-white);
+    font-variant-numeric: tabular-nums;
+}
+
+.headerCurve {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: -15px;
+    /* pull down close to bottom */
+}
+
+/* ── SCROLL ZONE ── */
+.scrollZone {
+    background: var(--cream-50);
+    border-radius: 20px 20px 0 0;
+    margin-top: -20px;
+    /* Overlap indigo header */
+    position: relative;
+    z-index: 10;
+    padding: var(--sp-24) var(--page-px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-24);
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Scan Card */
+.scanCard {
+    background: white;
+    border-radius: var(--radius-card);
+    padding: var(--sp-16) var(--sp-20);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-16);
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.scanCamCircle {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--mint-400), var(--indigo-950));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.scanTextCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.scanTitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.scanSub {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.scanArrow {
+    color: var(--mint-400);
+}
+
+/* AI Banner */
+.aiBanner {
+    background: linear-gradient(135deg, var(--indigo-950), var(--indigo-800));
+    border-radius: var(--radius-input);
+    /* 16px */
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-12);
+    cursor: pointer;
+}
+
+.aiIcon {
+    color: var(--mint-400);
+}
+
+.aiText {
+    flex: 1;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.aiArrow {
+    color: var(--mint-400);
+}
+
+/* Daily Plan */
+.planSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
+}
+
+.planHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.planLabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.planCount {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--mint-400);
+}
+
+.planList {
+    display: flex;
+    flex-direction: column;
+}
+
+.planRow {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    padding: 0 var(--sp-12);
+    border-bottom: 1px solid var(--cream-200);
+    cursor: pointer;
+    gap: var(--sp-12);
+    transition: all 0.2s ease;
+}
+
+.planRow:last-child {
+    border-bottom: none;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--cream-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.checkDone {
+    background: var(--mint-400);
+    border-color: var(--mint-400);
+}
+
+.taskName {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.taskDone {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.timeChip {
+    background: var(--cream-100);
+    border-radius: var(--radius-pill);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.timeDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.dotAM {
+    background: var(--score-green);
+}
+
+.dotPM {
+    background: var(--score-amber);
+}
+
+.bottomSpacer {
+    height: 140px;
+}

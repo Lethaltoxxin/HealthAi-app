@@ -1,365 +1,306 @@
-import { useState, useEffect, useRef } from 'react';
-import { Search, MessageSquare, FileText, Pill, Apple, ArrowRight, X, ExternalLink } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Trophy, Moon, Heart, Brain, Zap, Play, ChevronRight, Sparkles, Volume2, Wind, Sun, CloudRain, Dumbbell, Apple, Flame, Target, BookOpen, Clock, Star, Headphones } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Explore.module.css';
 
-const slides = [
-    {
-        id: 1,
-        title: 'Give me a 7-Day Diet Plan',
-        subtitle: 'Eat smart, feel better every day.',
-        cta: 'Get Started',
-        bg: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=2000&q=80', // Fresh healthy food
-        path: '/nutrition'
+/* ─── Featured content for each category ─── */
+const featuredContent = {
+    sleep: {
+        title: 'Sleep',
+        subtitle: 'Wind down & rest deeply',
+        gradient: 'linear-gradient(135deg, #1A0A3C 0%, #2D1B69 100%)',
+        accentColor: '#a78bfa',
+        icon: Moon,
+        featured: {
+            title: 'Submarine Slumber',
+            type: 'SLEEPCAST',
+            duration: '45 min',
+            description: 'Drift off aboard a quiet submarine gliding through bioluminescent depths.',
+        },
+        quickLinks: [
+            { label: 'Sleepcasts', icon: Headphones, count: '40+' },
+            { label: 'Wind Down', icon: Wind, count: '15' },
+            { label: 'Sleep Sounds', icon: Volume2, count: '30+' },
+            { label: 'Sleep Music', icon: Play, count: '20+' },
+        ],
+        stats: { label: 'Sleep Score', value: '76', unit: '/100' },
+        path: '/sleep',
     },
-    {
-        id: 2,
-        title: 'Scan Prescription',
-        subtitle: 'Know your medicines instantly.',
-        cta: 'Scan Now',
-        bg: 'https://images.unsplash.com/photo-1628771065518-0d82f0263320?auto=format&fit=crop&w=2000&q=80', // Pharmacy/Meds
-        path: '/prescription'
+    workout: {
+        title: 'Workout',
+        subtitle: 'Build strength & endurance',
+        gradient: 'linear-gradient(135deg, #FF7E67 0%, #E63946 100%)',
+        accentColor: '#FFE4E1',
+        icon: Dumbbell,
+        featured: {
+            title: '30-Day Fighter Program',
+            type: 'PROGRAM',
+            duration: '30 Days',
+            description: 'Combat-inspired bodyweight routines designed for explosive power and agility.',
+        },
+        quickLinks: [
+            { label: 'HIIT Routines', icon: Zap, count: '15' },
+            { label: 'Strength', icon: Target, count: '24' },
+            { label: 'No Equipment', icon: Flame, count: '40+' },
+            { label: 'Challenges', icon: Trophy, count: '10' },
+        ],
+        stats: { label: 'Active Min', value: '45', unit: 'today' },
+        path: '/workout',
     },
-    {
-        id: 3,
-        title: 'AI Symptom Checker',
-        subtitle: 'Get quick triage and guidance.',
-        cta: 'Check Symptoms',
-        bg: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=2000&q=80', // Doctor/Tech
-        path: '/symptoms'
+    recovery: {
+        title: 'Recovery',
+        subtitle: 'Restore & rebuild',
+        gradient: 'linear-gradient(135deg, #00E5C0 0%, #00B396 100%)',
+        accentColor: '#1A0A3C',
+        icon: Zap,
+        featured: {
+            title: 'Active Recovery Flow',
+            type: 'PROGRAM',
+            duration: '15 min',
+            description: 'Light movement sequence designed to accelerate muscle recovery and reduce soreness.',
+        },
+        quickLinks: [
+            { label: 'Stretching', icon: Dumbbell, count: '20+' },
+            { label: 'Foam Roll', icon: Zap, count: '12' },
+            { label: 'Mobility', icon: Wind, count: '18' },
+            { label: 'Breathing', icon: CloudRain, count: '10' },
+        ],
+        stats: { label: 'HRV', value: '58', unit: 'ms' },
+        path: '/progress',
     },
-    {
-        id: 4,
-        title: 'Personalised Workout',
-        subtitle: 'Plans based on your goals.',
-        cta: 'Build Plan',
-        bg: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=2000&q=80', // Gym
-        path: '/workout'
+    mindset: {
+        title: 'Mindset',
+        subtitle: 'Strengthen your mind',
+        gradient: 'linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%)',
+        accentColor: '#c4b5fd',
+        icon: Brain,
+        featured: {
+            title: 'Daily Calm',
+            type: 'MEDITATION',
+            duration: '10 min',
+            description: 'Start your day with intention through a guided mindfulness meditation.',
+        },
+        quickLinks: [
+            { label: 'Meditate', icon: Sun, count: '30+' },
+            { label: 'Focus', icon: Target, count: '15' },
+            { label: 'Breathwork', icon: Wind, count: '12' },
+            { label: 'Stress', icon: Brain, count: '10' },
+        ],
+        stats: { label: 'Mindful Min', value: '142', unit: 'this week' },
+        path: '/mindfulness',
     },
-    {
-        id: 5,
-        title: 'Mindfulness & Sleep',
-        subtitle: 'Recharge with guided meditation.',
-        cta: 'Start',
-        bg: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=2000&q=80', // Nature
-        path: '/mindfulness'
-    },
-    {
-        id: 6,
-        title: 'Track Your progress',
-        subtitle: 'See how far you have come.',
-        cta: 'View Insights',
-        bg: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80', // Analytics
-        path: '/progress'
-    }
+};
+
+const challenges = [
+    { id: 1, title: '7-Day Sleep Challenge', progress: 57, participants: '2.4k', color: '#8B5CF6', emoji: '🌙' },
+    { id: 2, title: 'Hydration Streak', progress: 80, participants: '1.8k', color: '#06B6D4', emoji: '💧' },
+    { id: 3, title: 'Mindfulness Sprint', progress: 32, participants: '960', color: '#10B981', emoji: '🧘' },
+    { id: 4, title: '10K Steps Daily', progress: 65, participants: '3.1k', color: '#F59E0B', emoji: '🏃' },
 ];
 
-const whatsNew = [
-    {
-        id: 'chat',
-        title: 'Chat',
-        subtitle: 'Ask health questions.',
-        icon: MessageSquare,
-        bg: 'https://images.unsplash.com/photo-1544367563-12123d8965cd?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'lab',
-        title: 'Lab Report',
-        subtitle: 'Read your reports.',
-        icon: FileText,
-        bg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'prescription',
-        title: 'Prescription',
-        subtitle: 'Know your medicines',
-        icon: Pill,
-        bg: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-        id: 'nutrition',
-        title: 'Nutrition',
-        subtitle: 'Track your meals.',
-        icon: Apple,
-        bg: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80'
-    }
-];
-
-const library = [
-    {
-        key: 'heart',
-        title: 'Heart Health',
-        count: 3,
-        color: '#FFE8E8',
-        icon: '❤️',
-        articles: [
-            { title: 'Heart-Healthy Foods: 8 Steps to Prevent Heart Disease', summary: 'Mayo Clinic — Learn which foods protect your heart.', source: 'Mayo Clinic', url: 'https://www.mayoclinic.org/diseases-conditions/heart-disease/in-depth/heart-healthy-diet/art-20047702' },
-            { title: 'Understanding Blood Pressure Readings', summary: 'American Heart Association — What your numbers mean.', source: 'AHA', url: 'https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings' },
-            { title: 'How to Prevent Heart Disease', summary: 'Harvard Health — Evidence-based strategies for a healthier heart.', source: 'Harvard Health', url: 'https://www.health.harvard.edu/heart-health/preventing-heart-disease' }
-        ]
-    },
-    {
-        key: 'mental',
-        title: 'Mental Wellness',
-        count: 3,
-        color: '#F3E8FF',
-        icon: '🧠',
-        articles: [
-            { title: 'Relaxation Techniques: Breath Control Helps Quell Stress', summary: 'Harvard Health — Simple breathing exercises for daily calm.', source: 'Harvard Health', url: 'https://www.health.harvard.edu/mind-and-mood/relaxation-techniques-breath-control-helps-quell-errant-stress-response' },
-            { title: 'Tips for Better Sleep', summary: 'CDC — Healthy sleep habits and hygiene checklist.', source: 'CDC', url: 'https://www.cdc.gov/sleep/about/tips-for-better-sleep.html' },
-            { title: '5 Things You Should Know About Stress', summary: 'NIMH — Understanding how stress affects your body and mind.', source: 'NIMH', url: 'https://www.nimh.nih.gov/health/publications/stress' }
-        ]
-    },
-    {
-        key: 'fitness',
-        title: 'Fitness & Exercise',
-        count: 3,
-        color: '#ECFDF5',
-        icon: '⚡',
-        articles: [
-            { title: 'Physical Activity Guidelines for Americans', summary: 'HHS — How much exercise you really need per week.', source: 'HHS', url: 'https://health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines' },
-            { title: 'Benefits of Exercise', summary: 'MedlinePlus — Why regular physical activity matters.', source: 'MedlinePlus', url: 'https://medlineplus.gov/benefitsofexercise.html' },
-            { title: 'Stretching: Focus on Flexibility', summary: 'Mayo Clinic — How stretching helps and best practices.', source: 'Mayo Clinic', url: 'https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/stretching/art-20047931' }
-        ]
-    },
-    {
-        key: 'nutrition',
-        title: 'Nutrition',
-        count: 3,
-        color: '#FFF7ED',
-        icon: '🍎',
-        articles: [
-            { title: 'Healthy Eating Plate', summary: 'Harvard T.H. Chan — A visual guide to creating balanced meals.', source: 'Harvard', url: 'https://www.hsph.harvard.edu/nutritionsource/healthy-eating-plate/' },
-            { title: 'Dietary Guidelines for Americans', summary: 'USDA — Evidence-based nutritional advice for all ages.', source: 'USDA', url: 'https://www.dietaryguidelines.gov/' },
-            { title: 'Vitamins and Minerals', summary: 'NIH — How micronutrients support your health.', source: 'NIH', url: 'https://www.nccih.nih.gov/health/vitamins-and-minerals' }
-        ]
-    },
-    {
-        key: 'conditions',
-        title: 'Common Conditions',
-        count: 3,
-        color: '#EFF6FF',
-        icon: '🩺',
-        articles: [
-            { title: 'Diabetes Overview', summary: 'WHO — Types, symptoms, and how to manage diabetes.', source: 'WHO', url: 'https://www.who.int/health-topics/diabetes' },
-            { title: 'Fever: First Aid', summary: 'Mayo Clinic — When to seek care and how to treat fevers.', source: 'Mayo Clinic', url: 'https://www.mayoclinic.org/first-aid/first-aid-fever/basics/art-20056685' },
-            { title: 'Common Cold', summary: 'CDC — Symptoms, prevention, and treatment.', source: 'CDC', url: 'https://www.cdc.gov/common-cold/about/index.html' }
-        ]
-    },
-    {
-        key: 'meds',
-        title: 'Medications',
-        count: 2,
-        color: '#FFF1F2',
-        icon: '💊',
-        articles: [
-            { title: 'Use Medicines Safely', summary: 'NIH — Tips for taking medications the right way.', source: 'NIH', url: 'https://www.nia.nih.gov/health/medicines-and-medication-management/safe-use-medicines-older-adults' },
-            { title: 'Drug Interactions: What You Should Know', summary: 'FDA — How different medicines can affect each other.', source: 'FDA', url: 'https://www.fda.gov/drugs/resources-you-drugs/drug-interactions-what-you-should-know' }
-        ]
-    }
+const trendingTopics = [
+    { label: 'Sleep Hygiene', icon: Moon, color: '#8B5CF6' },
+    { label: 'HIIT Recovery', icon: Zap, color: '#06B6D4' },
+    { label: 'Stress Relief', icon: Brain, color: '#7C3AED' },
+    { label: 'Core Strength', icon: Dumbbell, color: '#DC2626' },
+    { label: 'Breathwork', icon: Wind, color: '#D97706' },
 ];
 
 export default function Explore() {
     const navigate = useNavigate();
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [autoplay, setAutoplay] = useState(true);
-    // state for autoplay
-    const [expandedCategory, setExpandedCategory] = useState(null);
+    const [activeChallenge, setActiveChallenge] = useState(0);
+    const [joinedChallenges, setJoinedChallenges] = useState([1]);
+    const scrollRef = useRef(null);
 
-    // Carousel Autoplay - Simplified and Robust
     useEffect(() => {
-        let interval;
-        if (autoplay) {
-            interval = setInterval(() => {
-                setCurrentSlide((prev) => (prev + 1) % slides.length);
-            }, 3500);
+        const timer = setInterval(() => {
+            setActiveChallenge(prev => (prev + 1) % challenges.length);
+        }, 4000);
+        return () => clearInterval(timer);
+    }, []);
+
+    useEffect(() => {
+        if (scrollRef.current) {
+            const container = scrollRef.current;
+            const card = container.children[activeChallenge];
+            if (card) {
+                const centerScroll = card.offsetLeft - container.offsetLeft - (container.offsetWidth / 2) + (card.offsetWidth / 2);
+                container.scrollTo({ left: centerScroll, behavior: 'smooth' });
+            }
         }
-        return () => clearInterval(interval);
-    }, [autoplay]);
+    }, [activeChallenge]);
 
-    const handleDotClick = (index) => {
-        setCurrentSlide(index);
-        // Do not disable autoplay permanently on click, let hover handle it
-        // Or if we want to pause briefly:
-        setAutoplay(false);
-        setTimeout(() => setAutoplay(true), 5000);
+    const toggleJoin = (id) => {
+        setJoinedChallenges(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
     };
 
-    const toggleCategory = (key) => {
-        setExpandedCategory(expandedCategory === key ? null : key);
-    };
+    const categories = Object.entries(featuredContent);
 
     return (
-        <div className={styles.container}>
-            {/* Header */}
-            <header className={styles.header}>
+        <div className={styles.explorePage}>
+            {/* ─── Header ─── */}
+            <header className={styles.topBar}>
                 <h1 className={styles.pageTitle}>Explore</h1>
-                <p className={styles.pageSubtitle}>Discover health resources and tools</p>
+                <p className={styles.pageSubtitle}>Discover features powered by science</p>
             </header>
 
-            {/* Search Bar - White */}
-            <div className={styles.searchBar}>
-                <Search size={20} />
-                <input
-                    type="text"
-                    placeholder="Search Health Library..."
-                    className={styles.searchInput}
-                />
-            </div>
-
-            {/* Banner Carousel */}
-            <div
-                className={styles.carousel}
-                onMouseEnter={() => setAutoplay(false)}
-                onMouseLeave={() => setAutoplay(true)}
-            >
-                <AnimatePresence initial={false} mode="wait">
-                    <motion.div
-                        key={currentSlide}
-                        className={styles.slide}
-                        style={{ backgroundImage: `url(${slides[currentSlide].bg})` }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.8 }}
+            {/* ─── Trending Topics Strip ─── */}
+            <div className={`${styles.trendingRow} hide-scrollbar`}>
+                {trendingTopics.map((topic, i) => (
+                    <motion.button
+                        key={topic.label}
+                        className={styles.trendingPill}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
                     >
-                        <div className={styles.overlay} />
-                        <div className={styles.slideContent}>
-                            <motion.h2
-                                className={styles.slideTitle}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                            >
-                                {slides[currentSlide].title}
-                            </motion.h2>
-                            <motion.p
-                                className={styles.slideSubtitle}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
-                            >
-                                {slides[currentSlide].subtitle}
-                            </motion.p>
-                            <motion.button
-                                onClick={() => navigate(slides[currentSlide].path)}
-                                className={styles.ctaLink}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.4 }}
-                            >
-                                {slides[currentSlide].cta} <ArrowRight size={18} />
-                            </motion.button>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-
-                <div className={styles.carouselDots}>
-                    {slides.map((_, i) => (
-                        <button
-                            key={i}
-                            className={`${styles.dot} ${currentSlide === i ? styles.activeDot : ''}`}
-                            onClick={() => handleDotClick(i)}
-                        />
-                    ))}
-                </div>
-            </div>
-
-            {/* What's New For You Grid */}
-            <h2 className={styles.sectionTitle}>What's New for You</h2>
-            <div className={styles.grid}>
-                {whatsNew.map((item) => (
-                    <motion.div
-                        key={item.id}
-                        className={styles.card}
-                        style={{ backgroundImage: `url(${item.bg})` }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => {
-                            if (item.id === 'chat') navigate('/chat');
-                            if (item.id === 'lab') navigate('/lab-report');
-                            if (item.id === 'prescription') navigate('/prescription');
-                            if (item.id === 'nutrition') navigate('/nutrition');
-                        }}
-                    >
-                        <div className={styles.cardOverlay} />
-                        <div className={styles.cardContent}>
-                            <div className={styles.cardIcon}>
-                                <item.icon size={20} />
-                            </div>
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardSubtitle}>{item.subtitle}</p>
-                        </div>
-                    </motion.div>
+                        <topic.icon size={14} style={{ color: topic.color }} />
+                        <span>{topic.label}</span>
+                    </motion.button>
                 ))}
             </div>
 
-            {/* Restored Health Library Section */}
-            <h2 className={styles.sectionTitle}>Health Library</h2>
-            <motion.div className={styles.libraryGrid} layout>
-                {library.map((cat) => {
-                    const isExpanded = expandedCategory === cat.key;
+            {/* ─── Feature Category Cards ─── */}
+            <div className={styles.featureCards}>
+                {categories.map(([key, cat], i) => {
+                    const IconComp = cat.icon;
                     return (
                         <motion.div
-                            layout
-                            key={cat.key}
-                            className={styles.libraryCardWrapper}
-                            style={{
-                                flexBasis: isExpanded ? '100%' : 'calc(33.333% - 24px)',
-                                zIndex: isExpanded ? 2 : 1
-                            }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                            key={key}
+                            className={styles.featureCard}
+                            style={{ background: cat.gradient }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: i * 0.1 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => navigate(cat.path)}
                         >
-                            <motion.div
-                                className={styles.libraryCard}
-                                onClick={() => toggleCategory(cat.key)}
-                                layout
-                            >
-                                <motion.div className={styles.libraryCardHeader} layout="position">
-                                    <div className={styles.libraryIcon} style={{ background: cat.color }}>{cat.icon}</div>
-                                    <div className={styles.libraryContent}>
-                                        <h3 className={styles.libraryTitle}>{cat.title}</h3>
-                                        <p className={styles.libraryCount}>
-                                            {cat.articles.length > 0 ? `${cat.count} articles` : 'Coming soon'}
-                                        </p>
-                                    </div>
-                                    {isExpanded && <X size={20} style={{ marginLeft: 'auto', color: '#999' }} />}
-                                </motion.div>
+                            {/* Ambient glow */}
+                            <div className={styles.featureGlow} style={{ background: cat.accentColor }} />
 
-                                <AnimatePresence>
-                                    {isExpanded && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            className={styles.expandedContent}
-                                        >
-                                            {cat.articles.length > 0 ? cat.articles.map((article, idx) => (
-                                                <a
-                                                    key={idx}
-                                                    className={styles.article}
-                                                    href={article.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                >
-                                                    <div className={styles.articleLeft}>
-                                                        <h4 className={styles.articleTitle}>{article.title}</h4>
-                                                        <p className={styles.articleSummary}>{article.summary}</p>
-                                                    </div>
-                                                    <ExternalLink size={16} className={styles.articleLink} />
-                                                </a>
-                                            )) : (
-                                                <p style={{ color: '#888', textAlign: 'center' }}>Coming soon...</p>
-                                            )}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
+                            {/* Top row: icon + stats badge */}
+                            <div className={styles.featureTop}>
+                                <div className={styles.featureIconWrap} style={{ background: `${cat.accentColor}25` }}>
+                                    <IconComp size={20} style={{ color: cat.accentColor }} />
+                                </div>
+                                <div className={styles.featureStatBadge}>
+                                    <span className={styles.featureStatVal}>{cat.stats.value}</span>
+                                    <span className={styles.featureStatUnit}>{cat.stats.unit}</span>
+                                </div>
+                            </div>
+
+                            {/* Title area */}
+                            <div className={styles.featureTitleArea}>
+                                <h2 className={styles.featureTitle}>{cat.title}</h2>
+                                <span className={styles.featureSubtitle}>{cat.subtitle}</span>
+                            </div>
+
+                            {/* Featured content preview */}
+                            <div className={styles.featuredPreview}>
+                                <div className={styles.featuredBadge} style={{ background: `${cat.accentColor}30`, color: cat.accentColor }}>
+                                    {cat.featured.type}
+                                </div>
+                                <h3 className={styles.featuredTitle}>{cat.featured.title}</h3>
+                                <p className={styles.featuredDesc}>{cat.featured.description}</p>
+                                <div className={styles.featuredMeta}>
+                                    <Clock size={12} />
+                                    <span>{cat.featured.duration}</span>
+                                    <button className={styles.featuredPlayBtn} style={{ background: cat.accentColor }} onClick={(e) => { e.stopPropagation(); navigate(cat.path); }}>
+                                        <Play size={12} fill="white" /> Start
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Quick links row */}
+                            <div className={`${styles.quickLinksRow} hide-scrollbar`}>
+                                {cat.quickLinks.map((link) => {
+                                    const LinkIcon = link.icon;
+                                    return (
+                                        <div key={link.label} className={styles.quickLink}>
+                                            <LinkIcon size={13} style={{ color: cat.accentColor }} />
+                                            <span className={styles.quickLinkLabel}>{link.label}</span>
+                                            <span className={styles.quickLinkCount}>{link.count}</span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Explore arrow */}
+                            <div className={styles.featureArrow}>
+                                <span>Explore {cat.title}</span>
+                                <ChevronRight size={16} />
+                            </div>
                         </motion.div>
                     );
                 })}
+            </div>
+
+            {/* ─── Challenges Carousel ─── */}
+            <section className={styles.challengesSection}>
+                <div className={styles.sectionHeader}>
+                    <span className={styles.sectionLabel}>ACTIVE CHALLENGES</span>
+                    <span className={styles.sectionBadge}>{challenges.length} running</span>
+                </div>
+                <div ref={scrollRef} className={`${styles.challengeScroll} hide-scrollbar`}>
+                    {challenges.map((ch, i) => (
+                        <motion.div
+                            key={ch.id}
+                            className={`${styles.challengeCard} ${activeChallenge === i ? styles.challengeActive : ''}`}
+                            whileTap={{ scale: 0.97 }}
+                            onClick={() => setActiveChallenge(i)}
+                        >
+                            <div className={styles.challengeGradient} style={{ background: `linear-gradient(135deg, ${ch.color}15, ${ch.color}30)` }} />
+                            <div className={styles.challengeContent}>
+                                <div className={styles.challengeEmoji}>{ch.emoji}</div>
+                                <div className={styles.challengeInfo}>
+                                    <span className={styles.challengeTitle}>{ch.title}</span>
+                                    <div className={styles.challengeStats}>
+                                        <span>{ch.participants} joined</span>
+                                        <span>•</span>
+                                        <span>{ch.progress}% done</span>
+                                    </div>
+                                    <div className={styles.progressTrack}>
+                                        <motion.div
+                                            className={styles.progressFill}
+                                            style={{ background: ch.color }}
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${ch.progress}%` }}
+                                            transition={{ duration: 0.8, delay: 0.2 }}
+                                        />
+                                    </div>
+                                </div>
+                                <button
+                                    className={`${styles.joinBtn} ${joinedChallenges.includes(ch.id) ? styles.joinedBtn : ''}`}
+                                    style={joinedChallenges.includes(ch.id) ? { background: ch.color, borderColor: ch.color } : {}}
+                                    onClick={(e) => { e.stopPropagation(); toggleJoin(ch.id); }}
+                                >
+                                    {joinedChallenges.includes(ch.id) ? '✓' : 'Join'}
+                                </button>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+                <div className={styles.dots}>
+                    {challenges.map((_, i) => (
+                        <button
+                            key={i}
+                            className={`${styles.dot} ${activeChallenge === i ? styles.dotActive : ''}`}
+                            onClick={() => setActiveChallenge(i)}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            {/* ─── Daily Picks ─── */}
+            <motion.div className={styles.dailyPick} whileTap={{ scale: 0.98 }} onClick={() => navigate('/sleep')}>
+                <Sparkles size={18} style={{ color: '#8B5CF6' }} />
+                <div className={styles.dailyPickText}>
+                    <span className={styles.dailyPickTitle}>Tonight's Pick: Rainforest Dreams</span>
+                    <span className={styles.dailyPickDesc}>A 45-min sleepcast chosen based on your sleep patterns</span>
+                </div>
+                <ChevronRight size={16} style={{ color: 'var(--text-tertiary)' }} />
             </motion.div>
         </div>
     );

@@ -1,3 +1,4 @@
+/* Records List - Empty state */
 .emptyContainer {
     display: flex;
     flex-direction: column;
@@ -6,13 +7,12 @@
     height: 100%;
     padding: 32px;
     text-align: center;
-    background: var(--white);
 }
 
 .iconWrapper {
     width: 80px;
     height: 80px;
-    background: var(--soft-green);
+    background: var(--accent-cobalt-dim, rgba(37, 99, 235, 0.12));
     border-radius: 24px;
     display: flex;
     align-items: center;
@@ -21,35 +21,41 @@
 }
 
 .emptyTitle {
-    font-size: 24px;
-    color: var(--text-dark);
-    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
 }
 
 .emptyText {
-    color: var(--text-medium);
-    margin-bottom: 32px;
-    max-width: 240px;
+    color: var(--text-secondary);
+    margin: 0 0 32px 0;
+    max-width: 260px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .uploadBtn {
-    background: var(--primary-green);
-    color: var(--white);
+    background: var(--accent-1, #2563EB);
+    color: white;
     padding: 16px 32px;
-    border-radius: var(--radius-full);
+    border: none;
+    border-radius: 100px;
     font-weight: 600;
-    font-size: 16px;
-    transition: transform 0.1s;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
 }
 
 .uploadBtn:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
+    opacity: 0.9;
 }
 
 .secureNote {
     margin-top: 32px;
     font-size: 12px;
-    color: var(--text-light);
+    color: var(--text-tertiary);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -60,68 +66,205 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: var(--text-medium);
+    color: var(--text-secondary);
 }
 
+/* Records List Container */
 .listContainer {
-    padding: 24px;
-    background: #FAFAFA;
+    padding: 20px;
     min-height: 100%;
+    padding-bottom: 100px;
+}
+
+.listHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    padding-top: 12px;
 }
 
 .pageTitle {
-    font-size: 24px;
-    margin-bottom: 24px;
+    font-family: var(--font-display, inherit);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin: 0;
 }
 
-.list {
+.recordCount {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--bg-sheet, rgba(255, 255, 255, 0.05));
+    padding: 4px 12px;
+    border-radius: 100px;
+}
+
+/* Date Groups */
+.groupList {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
 }
 
-.card {
-    background: var(--white);
-    padding: 16px;
-    border-radius: var(--radius-md);
+.dateGroup {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-    cursor: pointer;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.cardIcon {
-    width: 48px;
-    height: 48px;
-    background: var(--soft-green);
-    border-radius: 12px;
+.dateHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.dateLabel {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.dateCount {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-cobalt-dim, rgba(37, 99, 235, 0.12));
+    color: var(--accent-cobalt, #2563EB);
+    font-size: 11px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-green);
+}
+
+/* Record Cards */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card {
+    background: var(--bg-sheet, rgba(255, 255, 255, 0.05));
+    padding: 14px 16px;
+    border-radius: var(--r-md, 12px);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+    box-shadow: var(--shadow-card, 0 2px 8px rgba(0, 0, 0, 0.02));
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.card:active {
+    background: var(--bg-sheet-2, rgba(255, 255, 255, 0.08));
+}
+
+.cardIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-cobalt-dim, rgba(37, 99, 235, 0.12));
+    color: var(--accent-cobalt, #2563EB);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cardIconRx {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10B981;
 }
 
 .cardInfo {
     flex: 1;
+    min-width: 0;
 }
 
 .cardInfo h3 {
     margin: 0 0 4px 0;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.cardInfo p {
-    margin: 0;
-    font-size: 12px;
-    color: var(--text-light);
+.cardMeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Type Badges */
+.typeBadge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+}
+
+.typePrescription {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10B981;
+}
+
+.typeReport {
+    background: var(--accent-cobalt-dim, rgba(37, 99, 235, 0.12));
+    color: var(--accent-cobalt, #2563EB);
+}
+
+.timeText {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+}
+
+.cardActions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.deleteSmallBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, background 0.15s;
+}
+
+.deleteSmallBtn:hover {
+    color: #EF4444;
+    background: rgba(239, 68, 68, 0.08);
 }
 
 .arrow {
-    color: var(--text-light);
+    color: var(--text-tertiary);
 }
 
+/* FAB */
 .fab {
     position: fixed;
     bottom: 88px;
@@ -129,13 +272,229 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: var(--primary-green);
-    color: var(--white);
-    font-size: 32px;
+    background: var(--accent-1, #2563EB);
+    color: white;
+    font-size: 28px;
+    font-weight: 300;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(15, 90, 73, 0.3);
-    padding-bottom: 4px;
-    /* visual center adjust */
+    border: none;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Detail View */
+.detailContainer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100%;
+}
+
+.detailHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.backBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--bg-sheet, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.detailTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.detailCard {
+    background: var(--bg-sheet, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+    border-radius: var(--r-xl, 16px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: var(--shadow-card-md, 0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.detailTop {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.detailIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: var(--accent-cobalt-dim, rgba(37, 99, 235, 0.12));
+    color: var(--accent-cobalt, #2563EB);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detailInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.detailInfo h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px 0;
+    word-break: break-word;
+}
+
+.detailMeta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.detailTime {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+/* Confidence in detail */
+.confidenceRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.confidenceBarBg {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-surface-2, rgba(255, 255, 255, 0.04));
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.confidenceBarFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-cobalt, #2563EB), var(--accent-success, #10B981));
+    border-radius: 100px;
+    transition: width 0.5s ease;
+}
+
+.confidencePct {
+    font-weight: 700;
+    color: var(--accent-cobalt, #2563EB);
+    min-width: 36px;
+    text-align: right;
+}
+
+/* Extracted & Analysis sections */
+.extractedSection,
+.analysisSection {
+    padding: 14px;
+    background: var(--bg-surface-2, rgba(255, 255, 255, 0.03));
+    border-radius: var(--r-md, 12px);
+}
+
+.sectionLabel {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-cobalt, #2563EB);
+    margin-bottom: 8px;
+}
+
+.extractedText {
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.analysisText {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Detail Actions */
+.detailActions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.discussBtn {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent-1, #2563EB);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.discussBtn:active {
+    opacity: 0.85;
+}
+
+.deleteBtn {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    border: 1.5px solid rgba(239, 68, 68, 0.25);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #EF4444;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.deleteBtn:active {
+    background: rgba(239, 68, 68, 0.06);
 }
