@@ -10,3 +10,16 @@ dist/
 backend/venv/
 __pycache__/
 *.pyc
+
+# Temporary and log files
+*.txt
+diffs.txt
+git_diff_ascii.txt
+git_diff_output.txt
+eslint_output.txt
+gitlog.txt
+lint.txt
+lint2.txt
+react_err.txt
+uncommitted_files.txt
+healthytogether.html
