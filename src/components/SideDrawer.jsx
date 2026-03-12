@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { X, User, Settings, PieChart, Info, LogOut, FileText } from 'lucide-react';
+import { X, User, Settings, PieChart, Info, LogOut, FileText, Moon, TrendingUp, Brain, Utensils, Activity } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import styles from './SideDrawer.module.css';
 
@@ -53,8 +53,28 @@ export default function SideDrawer({ isOpen, onClose }) {
                         <span>Explore</span>
                     </button>
 
-                    <button onClick={() => handleNavigate('/nutrition-onboarding')} className={styles.navItem}>
+                    <button onClick={() => handleNavigate('/workout')} className={styles.navItem}>
                         <PieChart size={20} />
+                        <span>Workout</span>
+                    </button>
+
+                    <button onClick={() => handleNavigate('/recovery')} className={styles.navItem}>
+                        <TrendingUp size={20} />
+                        <span>Recovery</span>
+                    </button>
+
+                    <button onClick={() => handleNavigate('/mindfulness')} className={styles.navItem}>
+                        <Brain size={20} />
+                        <span>Mindset</span>
+                    </button>
+
+                    <button onClick={() => handleNavigate('/sleep')} className={styles.navItem}>
+                        <Moon size={20} />
+                        <span>Sleep</span>
+                    </button>
+
+                    <button onClick={() => handleNavigate('/nutrition-onboarding')} className={styles.navItem}>
+                        <Utensils size={20} />
                         <span>Nutrition Plan</span>
                     </button>
 

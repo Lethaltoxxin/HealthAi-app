@@ -43,9 +43,30 @@ export default function Home() {
                     </div>
 
                     <div className={styles.pillsRow}>
-                        <div className={styles.statPill}><span className={styles.statLabel}>SLEEP</span><span className={styles.statVal}>7.2h</span></div>
-                        <div className={styles.statPill}><span className={styles.statLabel}>HRV</span><span className={styles.statVal}>58ms</span></div>
-                        <div className={styles.statPill}><span className={styles.statLabel}>READINESS</span><span className={styles.statVal}>78</span></div>
+                        <motion.div 
+                            className={styles.statPill} 
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => navigate('/sleep')}
+                        >
+                            <span className={styles.statLabel}>SLEEP</span>
+                            <span className={styles.statVal}>7.2h</span>
+                        </motion.div>
+                        <motion.div 
+                            className={styles.statPill} 
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => navigate('/progress')}
+                        >
+                            <span className={styles.statLabel}>HRV</span>
+                            <span className={styles.statVal}>58ms</span>
+                        </motion.div>
+                        <motion.div 
+                            className={styles.statPill} 
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => navigate('/explore')}
+                        >
+                            <span className={styles.statLabel}>READINESS</span>
+                            <span className={styles.statVal}>78</span>
+                        </motion.div>
                     </div>
                 </div>
 

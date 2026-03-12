@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 
 // Pages
 import IntroModal from './pages/IntroModal';
+import Login from './pages/Login';
 import OnboardingFlow from './pages/OnboardingFlow';
 import LoadingScreen from './pages/LoadingScreen';
 import Home from './pages/Home';
@@ -24,30 +25,23 @@ import NutritionPlan from './pages/NutritionPlan';
 import GroceryList from './pages/GroceryList';
 import SymptomChecker from './pages/SymptomChecker';
 import Mindfulness from './pages/Mindfulness';
-import WorkoutBuilder from './pages/WorkoutBuilder';
+import Workout from './pages/Workout';
+import Sleep from './pages/Sleep';
 import Progress from './pages/Progress';
-
-
-const Login = () => <IntroModal />; // Redirect to Intro for now
 
 function AppRoutes() {
   const { currentUser } = useAuth();
 
-  // Simple protection: if not onboarded/logged in, show Intro
-  // For demo, we might want to be lenient or strict.
-  // Assuming 'currentUser' is null initially.
-
   return (
     <Routes>
       <Route path="/intro" element={<IntroModal />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/onboarding" element={<OnboardingFlow />} />
       <Route path="/loading" element={<LoadingScreen />} />
 
-
-
       {/* Protected Layout Routes */}
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={currentUser ? <Home /> : <IntroModal />} />
         <Route path="/records" element={<RecordsList />} />
         <Route path="/records/:id" element={<AnalysisResult />} />
         <Route path="/scan" element={<ScanScreen />} />
@@ -65,12 +59,13 @@ function AppRoutes() {
         <Route path="/settings/family" element={<FamilySharing />} />
         <Route path="/symptoms" element={<SymptomChecker />} />
         <Route path="/mindfulness" element={<Mindfulness />} />
-        <Route path="/workout" element={<WorkoutBuilder />} />
+        <Route path="/workout" element={<Workout />} />
+        <Route path="/sleep" element={<Sleep />} />
+        <Route path="/recovery" element={<Progress />} />
         <Route path="/progress" element={<Progress />} />
       </Route>
 
       {/* Redirects */}
-      <Route path="/login" element={<Navigate to="/intro" replace />} />
       <Route path="*" element={<Navigate to={currentUser ? "/" : "/intro"} replace />} />
     </Routes>
   );

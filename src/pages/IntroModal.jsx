@@ -82,7 +82,7 @@ export default function IntroModal() {
                 >
                     <button
                         className={styles.ctaButton}
-                        onClick={() => navigate('/onboarding')}
+                        onClick={() => navigate('/login')}
                     >
                         Get Started
                     </button>
