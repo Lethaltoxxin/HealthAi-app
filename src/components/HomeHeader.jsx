@@ -4,15 +4,18 @@ import styles from './HomeHeader.module.css';
 
 export default function HomeHeader() {
     const { currentUser } = useAuth();
-
-    // Use display name or default
     const firstName = currentUser?.displayName?.split(' ')[0] || 'Friend';
 
     return (
         <header className={styles.header}>
-            <div className={styles.greeting}>
-                <h1>Hey {firstName},</h1>
-                <p>I’m here.</p>
+            <div className={styles.logoAndGreeting}>
+                <div className={styles.logoRow}>
+                    <span className={styles.logoMain}>Health</span>
+                    <span className={styles.logoAccent}>AI</span>
+                </div>
+                <h1 className={styles.title}>
+                    Daily <span className={styles.titleAccent}>Grading</span> System.
+                </h1>
             </div>
             <button className={styles.bellBtn}>
                 <Bell size={24} />

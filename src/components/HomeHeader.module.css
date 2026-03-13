@@ -1,37 +1,71 @@
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 24px;
-    background: var(--white);
-    padding-top: 24px;
+    align-items: center;
+    padding: var(--sp-24) var(--page-px);
+    background: transparent;
 }
 
-.greeting h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0;
-    color: var(--text-dark);
+.logoAndGreeting {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.greeting p {
+.logoRow {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.logoMain {
+    font-family: var(--font-display);
+    font-weight: 900;
     font-size: 24px;
-    color: var(--text-medium);
-    margin: 4px 0 0 0;
+    color: var(--text-white);
+    letter-spacing: -1px;
+}
+
+.logoAccent {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--mint-400);
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: var(--sp-12) 0 0 0;
+    color: var(--text-white);
+    letter-spacing: -2px;
+}
+
+.titleAccent {
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: var(--mint-400);
+    position: relative;
+    padding: 0 4px;
 }
 
 .bellBtn {
-    background: var(--soft-green);
-    color: var(--primary-green);
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    color: var(--text-white);
     width: 44px;
     height: 44px;
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.1s;
+    transition: all 0.2s ease;
 }
 
 .bellBtn:active {
     transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.1);
 }

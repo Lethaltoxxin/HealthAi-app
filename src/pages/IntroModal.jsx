@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Shield, Activity, Brain, Heart } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import styles from './IntroModal.module.css';
 
 const features = [
@@ -12,6 +14,23 @@ const features = [
 
 export default function IntroModal() {
     const navigate = useNavigate();
+    const [hasOnboarded] = useState(localStorage.getItem('hasCompletedOnboarding') === 'true');
+    const { currentUser } = useAuth();
+
+    useEffect(() => {
+        // Only redirect to dashboard if they have already finished onboarding
+        if (currentUser && hasOnboarded) {
+            navigate('/');
+        }
+    }, [currentUser, hasOnboarded, navigate]);
+
+    const handleCTA = () => {
+        if (currentUser) {
+            navigate('/onboarding');
+        } else {
+            navigate('/login');
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -82,9 +101,9 @@ export default function IntroModal() {
                 >
                     <button
                         className={styles.ctaButton}
-                        onClick={() => navigate('/login')}
+                        onClick={handleCTA}
                     >
-                        Get Started
+                        {currentUser ? "Let's Begin" : "Get Started"}
                     </button>
                     <p className={styles.terms}>
                         By continuing, you agree to our Terms & Privacy Policy

@@ -9,8 +9,8 @@ const featuredContent = {
     sleep: {
         title: 'Sleep',
         subtitle: 'Wind down & rest deeply',
-        gradient: 'linear-gradient(135deg, #1A0A3C 0%, #2D1B69 100%)',
-        accentColor: '#a78bfa',
+        gradient: 'linear-gradient(135deg, #0A1118 0%, #162A3A 100%)',
+        accentColor: '#00D4AA',
         icon: Moon,
         featured: {
             title: 'Submarine Slumber',
@@ -30,8 +30,8 @@ const featuredContent = {
     workout: {
         title: 'Workout',
         subtitle: 'Build strength & endurance',
-        gradient: 'linear-gradient(135deg, #FF7E67 0%, #E63946 100%)',
-        accentColor: '#FFE4E1',
+        gradient: 'linear-gradient(135deg, #070D12 0%, #12232E 100%)',
+        accentColor: '#00D4AA',
         icon: Dumbbell,
         featured: {
             title: '30-Day Fighter Program',
@@ -51,8 +51,8 @@ const featuredContent = {
     recovery: {
         title: 'Recovery',
         subtitle: 'Restore & rebuild',
-        gradient: 'linear-gradient(135deg, #00E5C0 0%, #00B396 100%)',
-        accentColor: '#1A0A3C',
+        gradient: 'linear-gradient(135deg, #0A1118 0%, #0F1923 100%)',
+        accentColor: '#00D4AA',
         icon: Zap,
         featured: {
             title: 'Active Recovery Flow',
@@ -72,8 +72,8 @@ const featuredContent = {
     mindset: {
         title: 'Mindset',
         subtitle: 'Strengthen your mind',
-        gradient: 'linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%)',
-        accentColor: '#c4b5fd',
+        gradient: 'linear-gradient(135deg, #070D12 0%, #1A2832 100%)',
+        accentColor: '#6366F1',
         icon: Brain,
         featured: {
             title: 'Daily Calm',

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Layout from './components/Layout';
@@ -27,10 +28,25 @@ import SymptomChecker from './pages/SymptomChecker';
 import Mindfulness from './pages/Mindfulness';
 import Workout from './pages/Workout';
 import Sleep from './pages/Sleep';
-import Progress from './pages/Progress';
+import Progress from './pages/Progress'; // Corrected this line
 
 function AppRoutes() {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth(); // Added loading
+  const [hasOnboarded, setHasOnboarded] = useState(localStorage.getItem('hasCompletedOnboarding') === 'true');
+
+  useEffect(() => {
+    // Sync onboarding state if it changes in localStorage (e.g. from OnboardingFlow)
+    const checkOnboarding = () => {
+      setHasOnboarded(localStorage.getItem('hasCompletedOnboarding') === 'true');
+    };
+    window.addEventListener('storage', checkOnboarding);
+    // Also check on interval as 'storage' event only fires from other tabs
+    const interval = setInterval(checkOnboarding, 500);
+    return () => {
+      window.removeEventListener('storage', checkOnboarding);
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <Routes>
@@ -41,7 +57,11 @@ function AppRoutes() {
 
       {/* Protected Layout Routes */}
       <Route element={<Layout />}>
-        <Route path="/" element={currentUser ? <Home /> : <IntroModal />} />
+        <Route path="/" element={
+          hasOnboarded 
+            ? <Home /> 
+            : <IntroModal />
+        } />
         <Route path="/records" element={<RecordsList />} />
         <Route path="/records/:id" element={<AnalysisResult />} />
         <Route path="/scan" element={<ScanScreen />} />

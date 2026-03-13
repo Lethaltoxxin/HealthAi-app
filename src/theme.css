@@ -1,64 +1,61 @@
 :root {
-  /* MASTER DESIGN TOKENS - HEALTHAI APP */
+  /* MASTER DESIGN TOKENS - HEALTHAI APP (Medical Teal & Deep Navy) */
 
-  /* Color Palette - Indigo (Dark Surfaces) */
-  --indigo-950: #0D0B1F;
-  --indigo-900: #120E2E;
-  --indigo-800: #1C1650;
-  --indigo-600: #2D2080;
+  /* 🌑 Primary Dark Mode (Surfaces) */
+  --navy-base: #0A1118;      /* Deep Navy (Page BG) */
+  --midnight-base: #070D12;  /* Midnight (Section BG) */
+  --surface-dark: #0F1923;   /* Surface Dark (Cards/Bento) */
+  --surface-light: #162A3A;  /* Surface Lighter (Nav/Overlays) */
 
-  /* Color Palette - Mint (Accents) */
-  --mint-400: #00E5C0;
-  --mint-300: #33EDD1;
-  --mint-100: #D0FBF5;
+  /* 🧪 Medical Teal (Accents & CTAs) */
+  --teal-main: #00D4AA;      /* Brand Teal */
+  --teal-bright: #33EACC;    /* Bright Teal (Hover) */
+  --teal-soft: #C6F7EB;      /* Soft Teal (BG Tint) */
+  --teal-glow: rgba(0, 212, 170, 0.2);
 
-  /* Color Palette - Cream (Light Surfaces) */
-  --cream-50: #FAFAF7;
-  --cream-100: #F2F0EA;
-  --cream-200: #E8E4D9;
+  /* 🍦 Premium Cream (Light Mode & Text) */
+  --cream-base: #F2EEE8;     /* Main Cream BG */
+  --text-main: #E8F0EF;      /* Off-White Text */
+  --text-inverse: #1A1614;   /* Dark Typography */
+  --text-muted: #6B8A84;     /* Muted Text */
 
-  /* Core Backgrounds */
-  --bg-page: #FAF8F5;
-  /* Warmer unified light theme background */
+  /* Status & Analytics */
+  --status-success: #22C55E;
+  --status-warning: #F59E0B;
+  --status-critical: #EF4444;
 
-  /* Text Colors */
-  --text-white: #FFFFFF;
-  --text-off: #E2DFFF;
-  --text-dark: #1A1633;
-  --text-muted: #7B7599;
+  /* Legacy Mapping (for compatibility during transition) */
+  --bg-page: var(--navy-base);
+  --bg-card: var(--surface-dark);
+  --mint-400: var(--teal-main);
+  --text-white: var(--text-main);
+  
+  /* Typography */
+  --font-display: "Fraunces", serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-accent: "Fraunces", serif;
 
-  /* Status / Score Colors */
-  --score-green: #22C55E;
-  --score-amber: #F59E0B;
-  --score-red: #EF4444;
+  /* Glassmorphism Styles (Optimized for Dark Navy) */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(12px);
 
   /* Shadows */
-  --shadow-card: 0 4px 24px rgba(13, 11, 31, 0.12);
-  --shadow-float: 0 8px 40px rgba(0, 229, 192, 0.15);
+  --shadow-teal: 0 0 25px var(--teal-glow);
+  --shadow-deep: 0 15px 35px rgba(0, 0, 0, 0.4);
 
-  /* Typography */
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-body: "Inter", sans-serif;
-
-  /* Border Radius */
-  --radius-card: 32px;
-  --radius-pill: 999px;
-  --radius-input: 24px;
-  --radius-icon: 16px;
-
-  /* Spacing System (4px base) */
-  --sp-4: 4px;
+  /* Spacing & Layout */
+  --page-px: 20px;
   --sp-8: 8px;
   --sp-12: 12px;
   --sp-16: 16px;
   --sp-20: 20px;
   --sp-24: 24px;
   --sp-32: 32px;
-  --sp-40: 40px;
-
-  /* Layout Constants */
-  --page-px: 16px;
-  --easing: 0.2s ease;
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --radius-input: 16px;
+  --easing: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {

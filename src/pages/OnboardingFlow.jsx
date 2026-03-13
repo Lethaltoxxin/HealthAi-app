@@ -35,6 +35,8 @@ export default function OnboardingFlow() {
             setDirection(1);
             setStep(prev => prev + 1);
         } else {
+            // Store that we just completed onboarding locally to avoid race conditions with Firebase
+            localStorage.setItem('hasCompletedOnboarding', 'true');
             navigate('/loading');
             try {
                 const userId = currentUser?.uid || "demo_user";

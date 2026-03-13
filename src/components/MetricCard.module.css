@@ -4,59 +4,58 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    /* small gap between elements */
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     position: relative;
-    /* Optional accent border can be added by parent components via className override */
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--teal-main);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 212, 170, 0.15);
 }
 
 /* Variants */
 .light {
-    background: var(--text-white);
+    background: var(--surface-light);
 }
 
 .dark {
-    background: var(--indigo-800);
+    background: var(--surface-dark);
 }
 
 .label {
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     color: var(--text-muted);
 }
 
 .value {
-    font-size: 36px;
-    font-weight: 800;
+    font-size: 32px;
+    font-weight: 900;
     font-family: var(--font-display);
     line-height: 1.1;
     margin-top: 2px;
-}
-
-.light .value {
-    color: var(--text-dark);
-}
-
-.dark .value {
-    color: var(--text-white);
+    color: var(--text-main);
 }
 
 .trend {
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .trendValue {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .trendUp {
-    color: var(--score-green);
+    color: var(--teal-main);
 }
 
 .trendDown {

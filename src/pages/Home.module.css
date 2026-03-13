@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: var(--cream-50);
+    background: var(--navy-base);
+    color: var(--text-main);
 }
 
-/* ── HEADER ZONE ── */
+/* ── HEADER ZONE (Medical Gradient) ── */
 .headerZone {
-    background: var(--indigo-950);
+    background: linear-gradient(180deg, var(--surface-light) 0%, var(--navy-base) 100%);
     padding-top: 44px;
-    /* status bar reserved */
     position: sticky;
     top: 0;
     z-index: 50;
@@ -23,25 +23,28 @@
 }
 
 .avatar {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: var(--radius-pill);
-    background: linear-gradient(135deg, var(--indigo-600), #5200FF);
-    color: var(--text-white);
+    background: linear-gradient(135deg, var(--teal-main), var(--indigo-600));
+    color: var(--text-main);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 900;
     font-size: 16px;
+    box-shadow: 0 0 20px var(--teal-glow);
 }
 
 .greeting {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-white);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
     margin-left: var(--sp-12);
     flex: 1;
+    letter-spacing: -0.5px;
 }
 
 .streakContainer {
@@ -50,22 +53,24 @@
 }
 
 .streakPill {
-    background: rgba(255, 165, 0, 0.15);
-    border: 1px solid rgba(255, 165, 0, 0.3);
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    backdrop-filter: var(--glass-blur);
     border-radius: var(--radius-pill);
-    padding: 6px 12px;
-    color: var(--mint-400);
-    font-size: 14px;
-    font-weight: 600;
+    padding: 6px 14px;
+    color: var(--teal-main);
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 0 15px var(--teal-glow);
 }
 
 .bellIcon {
-    color: var(--text-white);
+    color: var(--text-muted);
     margin-left: var(--sp-12);
 }
 
 .scoreSection {
-    padding: var(--sp-16) var(--page-px);
+    padding: var(--sp-24) var(--page-px);
     display: flex;
     flex-direction: column;
     gap: var(--sp-8);
@@ -73,10 +78,10 @@
 
 .scoreLabel {
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--text-muted);
 }
 
 .scoreValContainer {
@@ -86,70 +91,66 @@
 
 .scoreNum {
     font-family: var(--font-display);
-    font-size: 72px;
-    font-weight: 800;
-    color: var(--text-white);
-    letter-spacing: -2px;
-    line-height: 1;
+    font-size: 84px;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: -4px;
+    line-height: 0.9;
     font-variant-numeric: tabular-nums;
 }
 
 .scoreDenom {
     font-family: var(--font-display);
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.4);
-    margin-left: 2px;
+    color: var(--text-muted);
+    margin-left: 4px;
 }
 
 .pillsRow {
     display: flex;
-    gap: var(--sp-8);
-    margin-top: var(--sp-16);
-    margin-bottom: var(--sp-16);
+    gap: var(--sp-12);
+    margin-top: var(--sp-24);
+    overflow-x: auto;
+    padding-bottom: 4px;
 }
 
 .statPill {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-pill);
-    padding: 8px 16px;
+    background: var(--surface-dark);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-card);
+    padding: 12px 18px;
     display: flex;
-    align-items: baseline;
-    gap: var(--sp-8);
+    flex-direction: column;
+    gap: 4px;
+    min-width: 100px;
+    transition: all 0.2s ease;
+}
+
+.statPill:hover {
+    border-color: var(--teal-main);
+    background: var(--surface-light);
 }
 
 .statLabel {
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
 }
 
 .statVal {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-white);
-    font-variant-numeric: tabular-nums;
+    font-family: var(--font-accent);
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--teal-main);
 }
 
-.headerCurve {
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin-bottom: -15px;
-    /* pull down close to bottom */
-}
-
-/* ── SCROLL ZONE ── */
+/* ── CONTENT ZONE ── */
 .scrollZone {
-    background: var(--cream-50);
-    border-radius: 20px 20px 0 0;
-    margin-top: -20px;
-    /* Overlap indigo header */
-    position: relative;
-    z-index: 10;
-    padding: var(--sp-24) var(--page-px);
+    background: var(--navy-base);
+    padding: var(--sp-12) var(--page-px);
     display: flex;
     flex-direction: column;
     gap: var(--sp-24);
@@ -157,26 +158,28 @@
     overflow-y: auto;
 }
 
-/* Scan Card */
 .scanCard {
-    background: white;
+    background: var(--surface-dark);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-card);
-    padding: var(--sp-16) var(--sp-20);
+    padding: var(--sp-20);
     display: flex;
     align-items: center;
     gap: var(--sp-16);
     cursor: pointer;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s var(--easing);
 }
 
 .scanCamCircle {
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-pill);
-    background: linear-gradient(135deg, var(--mint-400), var(--indigo-950));
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--teal-main);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--navy-base);
+    box-shadow: 0 4px 12px var(--teal-glow);
     flex-shrink: 0;
 }
 
@@ -188,49 +191,50 @@
 }
 
 .scanTitle {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-dark);
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 .scanSub {
     font-size: 12px;
-    font-weight: 400;
+    line-height: 1.4;
     color: var(--text-muted);
 }
 
 .scanArrow {
-    color: var(--mint-400);
+    color: var(--teal-main);
 }
 
-/* AI Banner */
 .aiBanner {
-    background: linear-gradient(135deg, var(--indigo-950), var(--indigo-800));
+    background: linear-gradient(90deg, var(--teal-main), var(--indigo-600));
     border-radius: var(--radius-input);
-    /* 16px */
-    padding: 14px 20px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: var(--sp-12);
     cursor: pointer;
+    color: var(--navy-base);
 }
 
 .aiIcon {
-    color: var(--mint-400);
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
 }
 
 .aiText {
     flex: 1;
+    font-family: var(--font-body);
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    font-weight: 800;
+    color: var(--navy-base);
 }
 
-.aiArrow {
-    color: var(--mint-400);
-}
-
-/* Daily Plan */
 .planSection {
+    background: var(--surface-dark);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-card);
+    padding: var(--sp-20);
     display: flex;
     flex-direction: column;
     gap: var(--sp-12);
@@ -240,37 +244,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4px;
+    margin-bottom: var(--sp-8);
 }
 
 .planLabel {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-main);
 }
 
 .planCount {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--mint-400);
-}
-
-.planList {
-    display: flex;
-    flex-direction: column;
+    color: var(--teal-main);
+    font-weight: 800;
+    font-size: 12px;
 }
 
 .planRow {
     display: flex;
     align-items: center;
-    height: 52px;
-    padding: 0 var(--sp-12);
-    border-bottom: 1px solid var(--cream-200);
+    padding: var(--sp-12) 0;
+    border-bottom: 1px solid var(--border-glass);
     cursor: pointer;
     gap: var(--sp-12);
-    transition: all 0.2s ease;
 }
 
 .planRow:last-child {
@@ -278,57 +274,43 @@
 }
 
 .checkbox {
-    width: 20px;
-    height: 20px;
-    border-radius: var(--radius-pill);
-    border: 2px solid var(--cream-200);
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid var(--border-glass);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
 }
 
 .checkDone {
-    background: var(--mint-400);
-    border-color: var(--mint-400);
+    background: var(--teal-main);
+    border-color: var(--teal-main);
+    box-shadow: 0 0 10px var(--teal-glow);
 }
 
 .taskName {
     flex: 1;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
-    color: var(--text-dark);
+    color: var(--text-main);
 }
 
 .taskDone {
-    text-decoration: line-through;
     color: var(--text-muted);
+    opacity: 0.6;
+    text-decoration: line-through;
 }
 
 .timeChip {
-    background: var(--cream-100);
-    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
     padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 10px;
+    font-weight: 700;
     color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
-}
-
-.timeDot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-}
-
-.dotAM {
-    background: var(--score-green);
-}
-
-.dotPM {
-    background: var(--score-amber);
 }
 
 .bottomSpacer {
-    height: 140px;
+    height: 120px;
 }

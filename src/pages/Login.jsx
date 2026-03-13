@@ -12,7 +12,7 @@ export default function Login() {
     const handleContinue = (e) => {
         e.preventDefault();
         if (email) {
-            navigate('/onboarding'); // Redirect to onboarding first
+            navigate('/'); // Redirect to landing to see "Let's Begin"
         }
     };
 

@@ -47,16 +47,16 @@ export default function Progress() {
             {/* ── METRICS GRID ── */}
             <div className={styles.metricsGrid}>
                 <div className={styles.metricWrapper}>
-                    <MetricCard label="SLEEP SCORE" value="76" trend="up" trendValue="+4%" variant="light" />
+                    <MetricCard label="SLEEP SCORE" value="76" trend="up" trendValue="+4%" variant="dark" />
                 </div>
                 <div className={styles.metricWrapper}>
-                    <MetricCard label="HRV" value="42ms" trend="up" trendValue="+8%" variant="light" />
+                    <MetricCard label="HRV" value="42ms" trend="up" trendValue="+8%" variant="dark" />
                 </div>
                 <div className={styles.metricWrapper}>
-                    <MetricCard label="RECOVERY" value="85%" trend="down" trendValue="-2%" variant="light" />
+                    <MetricCard label="RECOVERY" value="85%" trend="down" trendValue="-2%" variant="dark" />
                 </div>
                 <div className={styles.metricWrapper}>
-                    <MetricCard label="NUTRITION" value="72%" trend="up" trendValue="+12%" variant="light" />
+                    <MetricCard label="NUTRITION" value="72%" trend="up" trendValue="+12%" variant="dark" />
                 </div>
             </div>
 
